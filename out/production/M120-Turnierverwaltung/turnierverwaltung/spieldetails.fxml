@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="175" prefWidth="330.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="turnierverwaltung.Spieldetails">
+    <center>
+        <HBox prefHeight="150.0" prefWidth="315.0">
+            <VBox prefHeight="100" prefWidth="50.0">
+                <Label fx:id="team1Name" textAlignment="CENTER" />
+                <TextField prefWidth="50.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></TextField>
+                <VBox.margin>
+                    <Insets top="40" />
+                </VBox.margin>
+            <HBox.margin>
+               <Insets left="50.0" top="50.0" />
+            </HBox.margin>
+            </VBox>
+            <Label prefWidth="30.0" text="-" textOverrun="CLIP">
+            <HBox.margin>
+               <Insets left="50.0" right="50.0" top="50.0" />
+            </HBox.margin>
+            <font>
+               <Font size="18.0" />
+            </font></Label>
+            <VBox prefHeight="100" prefWidth="50.0">
+                <Label fx:id="team2Name" textAlignment="CENTER" />
+                <TextField prefWidth="50.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></TextField>
+            <HBox.margin>
+               <Insets right="50.0" top="50.0" />
+            </HBox.margin>
+            </VBox>
+        </HBox>
+
+    </center>
+   <bottom>
+      <Button mnemonicParsing="false" text="Änderungen speichern" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="7.0" />
+         </BorderPane.margin></Button>
+   </bottom>
+<!--    <bottom>-->
+<!--        <Button fx:id="save-changes">Änderungen speichern</Button>-->
+<!--    </bottom>-->
+</BorderPane>
