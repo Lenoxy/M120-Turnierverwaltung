@@ -17,9 +17,9 @@
 
             <HBox>
                 <Label prefWidth="100">Trainer</Label>
-                <TextField prefWidth="150" />
+                <TextField prefWidth="150"/>
             <VBox.margin>
-               <Insets left="20.0" right="20.0" top="20.0" />
+               <Insets left="20.0" right="20.0" top="20.0"/>
             </VBox.margin>
             </HBox>
         </VBox>
@@ -28,10 +28,7 @@
    <bottom>
       <Button mnemonicParsing="false" text="Team speichern" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets bottom="7.0" />
+            <Insets bottom="7.0"/>
          </BorderPane.margin></Button>
    </bottom>
-<!--    <bottom>-->
-<!--        <Button fx:id="save-changes">Änderungen speichern</Button>-->
-<!--    </bottom>-->
 </BorderPane>
