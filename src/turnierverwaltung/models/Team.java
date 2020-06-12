@@ -5,7 +5,14 @@ import java.util.List;
 public class Team{
     private String name;
     private String trainer;
-    private List<Spiel> spiele;
+
+
+    public Team(String name, String trainer){
+        this.setName(name);
+        this.setTrainer(trainer);
+    }
+
+    public Team(){}
 
     public String getName(){
         return name;
@@ -21,13 +28,5 @@ public class Team{
 
     public void setTrainer(String trainer){
         this.trainer = trainer;
-    }
-
-    public List<Spiel> getSpiele(){
-        return spiele;
-    }
-
-    public void setSpiele(List<Spiel> spiele){
-        this.spiele = spiele;
     }
 }

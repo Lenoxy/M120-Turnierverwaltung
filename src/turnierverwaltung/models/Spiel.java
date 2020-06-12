@@ -5,6 +5,11 @@ public class Spiel{
     private Team team2;
     private Resultat resultat;
 
+    public Spiel(Team team1, Team team2){
+        this.setTeam1(team1);
+        this.setTeam2(team2);
+    }
+
     public Team getTeam1(){
         return team1;
     }
