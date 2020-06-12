@@ -1,4 +1,4 @@
-package turnierverwaltung;
+package turnierverwaltung.controllers;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,11 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Spieldetails extends Application{
+public class TeamErstellen extends Application{
     @Override
     public void start(Stage stage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("spieldetails.fxml"));
-        stage.setTitle("Spieldetails");
+        Parent root = FXMLLoader.load(getClass().getResource("./../teamErstellen.fxml"));
+        stage.setTitle("Team Erstellen");
         stage.setResizable(false);
         stage.setScene(new Scene(root, 300, 175));
         stage.show();

@@ -1,4 +1,4 @@
-package turnierverwaltung.model;
+package turnierverwaltung.models;
 
 public class Spiel{
     private Team team1;
