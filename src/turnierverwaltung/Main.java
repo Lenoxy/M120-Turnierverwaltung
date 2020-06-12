@@ -16,7 +16,6 @@ public class Main extends Application {
         primaryStage.setMinWidth(800);
         primaryStage.setMinHeight(475);
         primaryStage.setScene(new Scene(root, 800, 475));
-        Turnier turnier = new Turnier();
         primaryStage.show();
     }
 

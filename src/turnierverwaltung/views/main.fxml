@@ -26,12 +26,12 @@
             <center>
                 <TableView fx:id="tabelleTableView" prefHeight="200" prefWidth="200" BorderPane.alignment="CENTER">
                     <columns>
-                        <TableColumn prefWidth="${tabelleTableView.width*0.25}" text="Teamname" />
+                        <TableColumn fx:id="name" prefWidth="${tabelleTableView.width*0.25}" text="Teamname" />
                         <TableColumn prefWidth="${tabelleTableView.width*0.1}" text="Punkte" />
                         <TableColumn prefWidth="${tabelleTableView.width*0.1}" text="Gruppe" />
                         <TableColumn prefWidth="${tabelleTableView.width*0.1333}" text="Sieg" />
                         <TableColumn prefWidth="${tabelleTableView.width*0.1333}" text="Unentschieden" />
-                        <TableColumn prefWidth="${tabelleTableView.width*0.1333}" text="Niederlage" />
+                        <TableColumn prefWidth="${tabelleTableView.width*0.1332}" text="Niederlage" />
                         <TableColumn prefWidth="${tabelleTableView.width*0.15}" text="Torverhältnis" />
                     </columns>
                     <BorderPane.margin>

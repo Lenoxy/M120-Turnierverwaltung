@@ -1,14 +1,23 @@
 package turnierverwaltung.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Turnier{
-    private ArrayList<Team> teams = new ArrayList<Team>();
-    private ArrayList<Spiel> spiele = new ArrayList<Spiel>();
+    private ObservableList<Team> teams = FXCollections.observableArrayList();
+    private ObservableList<Spiel> spiele = FXCollections.observableArrayList();
 
-    public List<Team> getTeams(){
-        return teams;
+    public Turnier(){
+        // Testdata
+        teams.add(new Team("test", "test", 0, "A", 1, 1, 1, "22:55"));
+    }
+
+    public ObservableList<Team> getTeams(){
+        return this.teams;
+    }
+
+    public ObservableList<Spiel> getSpiele(){
+        return this.spiele;
     }
 
     public void addTeam(Team newTeam){
