@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="175" prefWidth="330.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="turnierverwaltung.Spieldetails">
+<BorderPane prefHeight="175" prefWidth="330.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="turnierverwaltung.controllers.Spieldetails">
     <center>
         <HBox prefHeight="150.0" prefWidth="315.0">
             <VBox prefHeight="100" prefWidth="50.0">

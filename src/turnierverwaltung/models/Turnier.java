@@ -1,4 +1,4 @@
-package turnierverwaltung.model;
+package turnierverwaltung.models;
 
 import java.util.List;
 
