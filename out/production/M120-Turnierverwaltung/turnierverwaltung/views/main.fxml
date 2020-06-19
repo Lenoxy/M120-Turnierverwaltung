@@ -107,6 +107,11 @@
                             <Insets left="235.0" top="7.0" />
                         </HBox.margin>
                     </Button>
+                    <Button fx:id="teamEntfernen" alignment="CENTER" contentDisplay="TOP" onAction="#onRemoveSelectedTeam" text="Ausgewähltes Team entfernen">
+                        <HBox.margin>
+                            <Insets left="10" top="7.0" />
+                        </HBox.margin>
+                    </Button>
                     <BorderPane.margin>
                         <Insets left="20.0" right="20.0" />
                     </BorderPane.margin>
@@ -115,10 +120,10 @@
             <center>
                 <TableView fx:id="teamsTableView" prefHeight="200" prefWidth="200" BorderPane.alignment="CENTER">
                     <columns>
-                        <TableColumn prefWidth="${teamsTableView.width*0.4}" text="Teamname" />
-                        <TableColumn prefWidth="${teamsTableView.width*0.2}" text="Punkte" />
-                        <TableColumn prefWidth="${teamsTableView.width*0.2}" text="Gruppe" />
-                        <TableColumn prefWidth="${teamsTableView.width*0.2}" text="Löschen" />
+                        <TableColumn fx:id="teamTeamNameColumn" prefWidth="${teamsTableView.width*0.4}" text="Teamname" />
+                        <TableColumn fx:id="teamPointsColumn" prefWidth="${teamsTableView.width*0.2}" text="Punkte" />
+                        <TableColumn fx:id="teamGroupColumn" prefWidth="${teamsTableView.width*0.2}" text="Gruppe" />
+                        <TableColumn fx:id="teamDeleteColumn" prefWidth="${teamsTableView.width*0.2}" text="Löschen" />
                     </columns>
                     <BorderPane.margin>
                         <Insets bottom="20" left="20" right="20" />
