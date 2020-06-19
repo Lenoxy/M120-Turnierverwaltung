@@ -3,6 +3,7 @@ package turnierverwaltung.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
+import org.w3c.dom.html.HTMLTableElement;
 import turnierverwaltung.models.TableRecord;
 
 import java.net.URL;
@@ -23,7 +24,7 @@ public class TableViewController implements Initializable {
     private List<TableRecord> parseRecords() {
         List<TableRecord> tableValues = new ArrayList<>();
 
-        // get all values and add to list
+
 
         TableRecord record = new TableRecord("1", 1, "1", "1", "1", "1", "1");
         tableValues.add(record);

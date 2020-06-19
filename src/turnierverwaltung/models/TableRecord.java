@@ -43,39 +43,39 @@ public class TableRecord {
         this.groups.set(groups);
     }
 
-    public String getVictories() {
+    public int getVictories() {
         return victories.get();
     }
 
-    public SimpleStringProperty victoriesProperty() {
-        return victories;
+    public int victoriesProperty() {
+        return victories.get();
     }
 
-    public void setVictories(String victories) {
+    public void setVictories(int victories) {
         this.victories.set(victories);
     }
 
-    public String getLosses() {
+    public int getLosses() {
         return losses.get();
     }
 
-    public SimpleStringProperty lossesProperty() {
-        return losses;
+    public int lossesProperty() {
+        return losses.get();
     }
 
-    public void setLosses(String losses) {
+    public void setLosses(int losses) {
         this.losses.set(losses);
     }
 
-    public String getDraws() {
+    public int getDraws() {
         return draws.get();
     }
 
-    public SimpleStringProperty drawsProperty() {
-        return draws;
+    public int drawsProperty() {
+        return draws.get();
     }
 
-    public void setDraws(String draws) {
+    public void setDraws(int draws) {
         this.draws.set(draws);
     }
 
@@ -91,15 +91,15 @@ public class TableRecord {
         this.goalDifferential.set(goalDifferential);
     }
 
-    private final SimpleStringProperty teamName = new SimpleStringProperty();
-    private final SimpleIntegerProperty points = new SimpleIntegerProperty();
-    private final SimpleStringProperty groups = new SimpleStringProperty();
-    private final SimpleStringProperty victories = new SimpleStringProperty();
-    private final SimpleStringProperty losses = new SimpleStringProperty();
-    private final SimpleStringProperty draws = new SimpleStringProperty();
-    private final SimpleStringProperty goalDifferential = new SimpleStringProperty();
+    private SimpleStringProperty teamName = new SimpleStringProperty();
+    private SimpleIntegerProperty points = new SimpleIntegerProperty();
+    private SimpleStringProperty groups = new SimpleStringProperty();
+    private SimpleIntegerProperty victories = new SimpleIntegerProperty();
+    private SimpleIntegerProperty losses = new SimpleIntegerProperty();
+    private SimpleIntegerProperty draws = new SimpleIntegerProperty();
+    private SimpleStringProperty goalDifferential = new SimpleStringProperty();
 
-    public TableRecord (String teamName, int points, String groups, String victories, String losses, String draws, String goalDifferential) {
+    public TableRecord (String teamName, int points, String groups, int victories, int losses, int draws, String goalDifferential) {
         this.setTeamName(teamName);
         this.setPoints(points);
         this.setGroups(groups);
