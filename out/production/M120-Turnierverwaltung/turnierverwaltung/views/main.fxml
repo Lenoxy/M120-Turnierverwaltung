@@ -42,22 +42,22 @@
                                 <PropertyValueFactory property="groups" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="victoriesColumn" prefWidth="${tableViewTabelle.width*0.1333}" text="Sieg">
+                        <TableColumn fx:id="victoriesColumn" prefWidth="${tableViewTabelle.width*0.1332}" text="Sieg">
                             <cellValueFactory>
                                 <PropertyValueFactory property="victories" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="drawsColumn" prefWidth="${tableViewTabelle.width*0.1333}" text="Unentschieden">
+                        <TableColumn fx:id="drawsColumn" prefWidth="${tableViewTabelle.width*0.1332}" text="Unentschieden">
                             <cellValueFactory>
                                 <PropertyValueFactory property="draws" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="lossesColumn" prefWidth="${tableViewTabelle.width*0.1333}" text="Niederlage">
+                        <TableColumn fx:id="lossesColumn" prefWidth="${tableViewTabelle.width*0.1332}" text="Niederlage">
                             <cellValueFactory>
                                 <PropertyValueFactory property="losses" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="goalDifferentialColumn" prefWidth="${tableViewTabelle.width*0.15}" text="Torverhältnis">
+                        <TableColumn fx:id="goalDifferentialColumn" prefWidth="${tableViewTabelle.width*0.145}" text="Torverhältnis">
                             <cellValueFactory>
                                 <PropertyValueFactory property="goalDifferential" />
                             </cellValueFactory>
@@ -120,10 +120,9 @@
             <center>
                 <TableView fx:id="teamsTableView" prefHeight="200" prefWidth="200" BorderPane.alignment="CENTER">
                     <columns>
-                        <TableColumn fx:id="teamTeamNameColumn" prefWidth="${teamsTableView.width*0.4}" text="Teamname" />
-                        <TableColumn fx:id="teamPointsColumn" prefWidth="${teamsTableView.width*0.2}" text="Punkte" />
-                        <TableColumn fx:id="teamGroupColumn" prefWidth="${teamsTableView.width*0.2}" text="Gruppe" />
-                        <TableColumn fx:id="teamDeleteColumn" prefWidth="${teamsTableView.width*0.2}" text="Löschen" />
+                        <TableColumn fx:id="teamTeamNameColumn" prefWidth="${teamsTableView.width*0.5}" text="Teamname" />
+                        <TableColumn fx:id="teamPointsColumn" prefWidth="${teamsTableView.width*0.25}" text="Punkte" />
+                        <TableColumn fx:id="teamGroupColumn" prefWidth="${teamsTableView.width*0.25}" text="Gruppe" />
                     </columns>
                     <BorderPane.margin>
                         <Insets bottom="20" left="20" right="20" />

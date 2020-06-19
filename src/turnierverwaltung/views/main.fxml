@@ -42,22 +42,22 @@
                                 <PropertyValueFactory property="groups" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="victoriesColumn" prefWidth="${tableViewTabelle.width*0.1333}" text="Sieg">
+                        <TableColumn fx:id="victoriesColumn" prefWidth="${tableViewTabelle.width*0.1332}" text="Sieg">
                             <cellValueFactory>
                                 <PropertyValueFactory property="victories" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="drawsColumn" prefWidth="${tableViewTabelle.width*0.1333}" text="Unentschieden">
+                        <TableColumn fx:id="drawsColumn" prefWidth="${tableViewTabelle.width*0.1332}" text="Unentschieden">
                             <cellValueFactory>
                                 <PropertyValueFactory property="draws" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="lossesColumn" prefWidth="${tableViewTabelle.width*0.1333}" text="Niederlage">
+                        <TableColumn fx:id="lossesColumn" prefWidth="${tableViewTabelle.width*0.1332}" text="Niederlage">
                             <cellValueFactory>
                                 <PropertyValueFactory property="losses" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="goalDifferentialColumn" prefWidth="${tableViewTabelle.width*0.15}" text="Torverhältnis">
+                        <TableColumn fx:id="goalDifferentialColumn" prefWidth="${tableViewTabelle.width*0.145}" text="Torverhältnis">
                             <cellValueFactory>
                                 <PropertyValueFactory property="goalDifferential" />
                             </cellValueFactory>
