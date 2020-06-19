@@ -7,17 +7,21 @@ public class Turnier{
     private static Turnier instance;
     private ObservableList<TableRecord> teams = FXCollections.observableArrayList();
     private ObservableList<Spiel> spiele = FXCollections.observableArrayList();
+    private int pointsPerVictory = 3;
+    private int pointsPerDraw = 1;
+    private int pointsPerLoss = 0;
 
     public Turnier(){
-        // Testdata
+        System.out.println("Turnier erstellt");
         teams.add(new TableRecord("test", 1, "a", 0, 1, 1,  "22:55"));
+    }
 
+    public static void restartTurnier(){
+        instance = new Turnier();
     }
 
     public static Turnier getInstance(){
-        if(instance == null){
-            instance = new Turnier();
-        }
+        if(instance == null) instance = new Turnier();
         return instance;
     }
 
@@ -43,5 +47,29 @@ public class Turnier{
 
     public void setSpiel (Spiel spiel){
         this.spiele.add(spiel);
+    }
+
+    public int getPointsPerVictory(){
+        return pointsPerVictory;
+    }
+
+    public void setPointsPerVictory(int pointsPerVictory){
+        this.pointsPerVictory = pointsPerVictory;
+    }
+
+    public int getPointsPerDraw(){
+        return pointsPerDraw;
+    }
+
+    public void setPointsPerDraw(int pointsPerDraw){
+        this.pointsPerDraw = pointsPerDraw;
+    }
+
+    public int getPointsPerLoss(){
+        return pointsPerLoss;
+    }
+
+    public void setPointsPerLoss(int pointsPerLoss){
+        this.pointsPerLoss = pointsPerLoss;
     }
 }
