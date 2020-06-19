@@ -13,6 +13,8 @@ public class TableRecord {
     private SimpleIntegerProperty draws;
     private SimpleStringProperty goalDifferential;
 
+    public TableRecord(){}
+
     public TableRecord (String teamName, int points, String group, int victories, int losses, int draws, String goalDifferential) {
 
         this.teamName = new SimpleStringProperty(teamName);
