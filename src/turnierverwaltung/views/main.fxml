@@ -120,10 +120,9 @@
             <center>
                 <TableView fx:id="teamsTableView" prefHeight="200" prefWidth="200" BorderPane.alignment="CENTER">
                     <columns>
-                        <TableColumn fx:id="teamTeamNameColumn" prefWidth="${teamsTableView.width*0.4}" text="Teamname" />
-                        <TableColumn fx:id="teamPointsColumn" prefWidth="${teamsTableView.width*0.2}" text="Punkte" />
-                        <TableColumn fx:id="teamGroupColumn" prefWidth="${teamsTableView.width*0.2}" text="Gruppe" />
-                        <TableColumn fx:id="teamDeleteColumn" prefWidth="${teamsTableView.width*0.2}" text="Löschen" />
+                        <TableColumn fx:id="teamTeamNameColumn" prefWidth="${teamsTableView.width*0.5}" text="Teamname" />
+                        <TableColumn fx:id="teamPointsColumn" prefWidth="${teamsTableView.width*0.25}" text="Punkte" />
+                        <TableColumn fx:id="teamGroupColumn" prefWidth="${teamsTableView.width*0.25}" text="Gruppe" />
                     </columns>
                     <BorderPane.margin>
                         <Insets bottom="20" left="20" right="20" />
