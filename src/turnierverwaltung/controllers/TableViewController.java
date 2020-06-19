@@ -26,7 +26,7 @@ public class TableViewController implements Initializable {
 
 
 
-        TableRecord record = new TableRecord("1", 1, "1", "1", "1", "1", "1");
+        TableRecord record = new TableRecord("1", 1, "1", 1, 1, 1, "1");
         tableValues.add(record);
         return tableValues;
     }
