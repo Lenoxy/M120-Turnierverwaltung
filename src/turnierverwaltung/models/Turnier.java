@@ -4,15 +4,24 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Turnier{
-    private ObservableList<Team> teams = FXCollections.observableArrayList();
+    private static Turnier instance;
+    private ObservableList<TableRecord> teams = FXCollections.observableArrayList();
     private ObservableList<Spiel> spiele = FXCollections.observableArrayList();
 
     public Turnier(){
         // Testdata
-        teams.add(new Team("test", "test", 0, "A", 1, 1, 1, "22:55"));
+        teams.add(new TableRecord("test", 1, "a", 0, 1, 1,  "22:55"));
+
     }
 
-    public ObservableList<Team> getTeams(){
+    public static Turnier getInstance(){
+        if(instance == null){
+            instance = new Turnier();
+        }
+        return instance;
+    }
+
+    public ObservableList<TableRecord> getTeams(){
         return this.teams;
     }
 
@@ -20,11 +29,11 @@ public class Turnier{
         return this.spiele;
     }
 
-    public void addTeam(Team newTeam){
+    public void addTeam(TableRecord newTeam){
         this.teams.add(newTeam);
     }
 
-    public void removeTeam(Team team){
+    public void removeTeam(TableRecord team){
         this.teams.remove(team);
     }
 

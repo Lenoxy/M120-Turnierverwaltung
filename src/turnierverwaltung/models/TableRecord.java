@@ -5,7 +5,24 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class TableRecord {
 
-    public TableRecord(){}
+    private SimpleStringProperty teamName;
+    private SimpleIntegerProperty points;
+    private SimpleStringProperty group;
+    private SimpleIntegerProperty victories;
+    private SimpleIntegerProperty losses;
+    private SimpleIntegerProperty draws;
+    private SimpleStringProperty goalDifferential;
+
+    public TableRecord (String teamName, int points, String group, int victories, int losses, int draws, String goalDifferential) {
+
+        this.teamName = new SimpleStringProperty(teamName);
+        this.points = new SimpleIntegerProperty(points);
+        this.group = new SimpleStringProperty(group);
+        this.victories = new SimpleIntegerProperty(victories);
+        this.losses = new SimpleIntegerProperty(losses);
+        this.draws = new SimpleIntegerProperty(draws);
+        this.goalDifferential = new SimpleStringProperty(goalDifferential);
+    }
 
     public String getTeamName() {
         return teamName.get();
@@ -31,24 +48,24 @@ public class TableRecord {
         this.points.set(points);
     }
 
-    public String getGroups() {
-        return groups.get();
+    public String getGroup() {
+        return group.get();
     }
 
-    public SimpleStringProperty groupsProperty() {
-        return groups;
+    public SimpleStringProperty groupProperty() {
+        return group;
     }
 
-    public void setGroups(String groups) {
-        this.groups.set(groups);
+    public void setGroup(String group) {
+        this.group.set(group);
     }
 
     public int getVictories() {
         return victories.get();
     }
 
-    public int victoriesProperty() {
-        return victories.get();
+    public SimpleIntegerProperty victoriesProperty() {
+        return victories;
     }
 
     public void setVictories(int victories) {
@@ -59,8 +76,8 @@ public class TableRecord {
         return losses.get();
     }
 
-    public int lossesProperty() {
-        return losses.get();
+    public SimpleIntegerProperty lossesProperty() {
+        return losses;
     }
 
     public void setLosses(int losses) {
@@ -71,8 +88,8 @@ public class TableRecord {
         return draws.get();
     }
 
-    public int drawsProperty() {
-        return draws.get();
+    public SimpleIntegerProperty drawsProperty() {
+        return draws;
     }
 
     public void setDraws(int draws) {
@@ -90,24 +107,4 @@ public class TableRecord {
     public void setGoalDifferential(String goalDifferential) {
         this.goalDifferential.set(goalDifferential);
     }
-
-    private SimpleStringProperty teamName = new SimpleStringProperty();
-    private SimpleIntegerProperty points = new SimpleIntegerProperty();
-    private SimpleStringProperty groups = new SimpleStringProperty();
-    private SimpleIntegerProperty victories = new SimpleIntegerProperty();
-    private SimpleIntegerProperty losses = new SimpleIntegerProperty();
-    private SimpleIntegerProperty draws = new SimpleIntegerProperty();
-    private SimpleStringProperty goalDifferential = new SimpleStringProperty();
-
-    public TableRecord (String teamName, int points, String groups, int victories, int losses, int draws, String goalDifferential) {
-        this.setTeamName(teamName);
-        this.setPoints(points);
-        this.setGroups(groups);
-        this.setVictories(victories);
-        this.setLosses(losses);
-        this.setDraws(draws);
-        this.setGoalDifferential(goalDifferential);
-    }
-
-
 }

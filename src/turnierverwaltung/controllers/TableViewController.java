@@ -2,9 +2,12 @@ package turnierverwaltung.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.w3c.dom.html.HTMLTableElement;
 import turnierverwaltung.models.TableRecord;
+import turnierverwaltung.models.Turnier;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,18 +19,20 @@ public class TableViewController implements Initializable {
     @FXML
     TableView<TableRecord> tableViewTabelle;
 
+    @FXML
+    TableColumn<TableRecord, String> teamNameColumn, pointsColumn, groupColumn, victoriesColumn, lossesColumn, drawsColumn, goalDifferentialColumn;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tableViewTabelle.getItems().setAll(parseRecords());
-    }
+        teamNameColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("teamName"));
+        pointsColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("points"));
+        groupColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("group"));
+        victoriesColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("victories"));
+        lossesColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("losses"));
+        drawsColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("draws"));
+        goalDifferentialColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("goalDifferential"));
 
-    private List<TableRecord> parseRecords() {
-        List<TableRecord> tableValues = new ArrayList<>();
-
-
-
-        TableRecord record = new TableRecord("1", 1, "1", "1", "1", "1", "1");
-        tableValues.add(record);
-        return tableValues;
+        tableViewTabelle.setItems(Turnier.getInstance().getTeams());
     }
 }
