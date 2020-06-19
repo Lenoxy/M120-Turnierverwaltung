@@ -12,14 +12,14 @@ import java.util.List;
 public class TeamErstellenController{
 
     @FXML
-    private TextField textFieldTeamName, textFieldCoach;
+    private TextField textFieldTeamName;
 
     public List<TableRecord> teams = new ArrayList<>();
 
     public void onSaveTeam () {
         TableRecord team = new TableRecord();
+        System.out.println(textFieldTeamName.getText());
         team.setTeamName(textFieldTeamName.getText());
-        //team.setTrainer(new SimpleStringProperty(textFieldCoach.getText()));
         this.teams.add(team);
     }
 }
