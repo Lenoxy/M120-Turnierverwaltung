@@ -13,7 +13,15 @@ public class TableRecord {
     private SimpleIntegerProperty draws;
     private SimpleStringProperty goalDifferential;
 
-    public TableRecord(){}
+    public TableRecord(){
+        this.teamName = new SimpleStringProperty();
+        this.points = new SimpleIntegerProperty();
+        this.group = new SimpleStringProperty();
+        this.victories = new SimpleIntegerProperty();
+        this.losses = new SimpleIntegerProperty();
+        this.draws = new SimpleIntegerProperty();
+        this.goalDifferential = new SimpleStringProperty();
+    }
 
     public TableRecord (String teamName, int points, String group, int victories, int losses, int draws, String goalDifferential) {
 
@@ -35,6 +43,7 @@ public class TableRecord {
     }
 
     public void setTeamName(String teamName) {
+        System.out.println(teamName);
         this.teamName.set(teamName);
     }
 
