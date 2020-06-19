@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="175" prefWidth="330.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="turnierverwaltung.TeamErstellen">
+<BorderPane prefHeight="175" prefWidth="330.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="turnierverwaltung.controllers.TeamErstellenController">
     <center>
         <VBox prefHeight="150.0" prefWidth="315.0">
             <HBox>
                 <Label prefWidth="100">Teamname</Label>
-                <TextField prefWidth="150" />
+                <TextField fx:id="textFieldTeamName" prefWidth="150" />
             <VBox.margin>
                <Insets left="20.0" right="20.0" top="20.0" />
             </VBox.margin>
@@ -17,18 +21,18 @@
 
             <HBox>
                 <Label prefWidth="100">Trainer</Label>
-                <TextField prefWidth="150"/>
+                <TextField fx:id="textFieldCoach" prefWidth="150" />
             <VBox.margin>
-               <Insets left="20.0" right="20.0" top="20.0"/>
+               <Insets left="20.0" right="20.0" top="20.0" />
             </VBox.margin>
             </HBox>
         </VBox>
 
     </center>
    <bottom>
-      <Button mnemonicParsing="false" text="Team speichern" BorderPane.alignment="CENTER">
+      <Button fx:id="buttonTeamSave" mnemonicParsing="false" onAction="#onSaveTeam" text="Team speichern" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets bottom="7.0"/>
+            <Insets bottom="7.0" />
          </BorderPane.margin></Button>
    </bottom>
 </BorderPane>

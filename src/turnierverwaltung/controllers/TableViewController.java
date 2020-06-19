@@ -22,7 +22,6 @@ public class TableViewController implements Initializable {
     @FXML
     TableColumn<TableRecord, String> teamNameColumn, pointsColumn, groupColumn, victoriesColumn, lossesColumn, drawsColumn, goalDifferentialColumn;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         teamNameColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("teamName"));
