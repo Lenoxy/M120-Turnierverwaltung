@@ -3,7 +3,7 @@ package turnierverwaltung.models;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class TableRecord {
+public class Team{
 
     private SimpleStringProperty teamName;
     private SimpleIntegerProperty points;
@@ -13,7 +13,7 @@ public class TableRecord {
     private SimpleIntegerProperty draws;
     private SimpleStringProperty goalDifferential;
 
-    public TableRecord(){
+    public Team(){
         this.teamName = new SimpleStringProperty();
         this.points = new SimpleIntegerProperty();
         this.group = new SimpleStringProperty();
@@ -23,7 +23,7 @@ public class TableRecord {
         this.goalDifferential = new SimpleStringProperty();
     }
 
-    public TableRecord (String teamName, int points, String group, int victories, int losses, int draws, String goalDifferential) {
+    public Team(String teamName, int points, String group, int victories, int losses, int draws, String goalDifferential) {
 
         this.teamName = new SimpleStringProperty(teamName);
         this.points = new SimpleIntegerProperty(points);

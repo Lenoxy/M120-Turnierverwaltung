@@ -1,17 +1,20 @@
 package turnierverwaltung.controllers;
 
-import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
-import turnierverwaltung.models.TableRecord;
+import javafx.stage.Stage;
+import turnierverwaltung.models.Team;
 import turnierverwaltung.models.Turnier;
 
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -20,17 +23,17 @@ public class TableViewController implements Initializable{
 
     //Tabelle
     @FXML
-    TableView<TableRecord> tableViewTabelle;
+    TableView<Team> tableViewTabelle;
     @FXML
-    TableColumn<TableRecord, String> teamNameColumn, pointsColumn, groupColumn, victoriesColumn, lossesColumn, drawsColumn, goalDifferentialColumn;
+    TableColumn<Team, String> teamNameColumn, pointsColumn, groupColumn, victoriesColumn, lossesColumn, drawsColumn, goalDifferentialColumn;
 
     // Spielplan
 
     // Teams verwalten
     @FXML
-    TableView<TableRecord> teamsTableView;
+    TableView<Team> teamsTableView;
     @FXML
-    TableColumn<TableRecord, String> teamTeamNameColumn, teamPointsColumn, teamGroupColumn;
+    TableColumn<Team, String> teamTeamNameColumn, teamPointsColumn, teamGroupColumn;
 
     // Einstellungen
     @FXML
@@ -40,20 +43,20 @@ public class TableViewController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources){
         // Tabelle
-        teamNameColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("teamName"));
-        pointsColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("points"));
-        groupColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("group"));
-        victoriesColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("victories"));
-        lossesColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("losses"));
-        drawsColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("draws"));
-        goalDifferentialColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("goalDifferential"));
+        teamNameColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("teamName"));
+        pointsColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("points"));
+        groupColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("group"));
+        victoriesColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("victories"));
+        lossesColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("losses"));
+        drawsColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("draws"));
+        goalDifferentialColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("goalDifferential"));
 
         tableViewTabelle.setItems(Turnier.getInstance().getTeams());
 
         // Teams verwalten
-        teamTeamNameColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("teamName"));
-        teamPointsColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("points"));
-        teamGroupColumn.setCellValueFactory(new PropertyValueFactory<TableRecord, String>("group"));
+        teamTeamNameColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("teamName"));
+        teamPointsColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("points"));
+        teamGroupColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("group"));
 
         teamsTableView.setItems(Turnier.getInstance().getTeams());
 
@@ -94,7 +97,7 @@ public class TableViewController implements Initializable{
     }
 
     public void onRemoveSelectedTeam(Event e){
-        TableRecord selected = teamsTableView.getSelectionModel().getSelectedItem();
+        Team selected = teamsTableView.getSelectionModel().getSelectedItem();
         if(selected != null){
             Turnier.getInstance().removeTeam(selected);
         }else{
@@ -105,5 +108,18 @@ public class TableViewController implements Initializable{
             }
         }
 
+    }
+
+    public void onCreateTeam(Event e) throws IOException{
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("../views/teamErstellen.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Team Erstellen");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root, 300, 175));
+            stage.show();
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
     }
 }

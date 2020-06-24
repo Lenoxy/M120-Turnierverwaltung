@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 public class Turnier{
     private static Turnier instance;
-    private ObservableList<TableRecord> teams = FXCollections.observableArrayList();
+    private ObservableList<Team> teams = FXCollections.observableArrayList();
     private ObservableList<Spiel> spiele = FXCollections.observableArrayList();
     private int pointsPerVictory = 3;
     private int pointsPerDraw = 1;
@@ -13,7 +13,7 @@ public class Turnier{
 
     public Turnier(){
         System.out.println("Turnier erstellt");
-        teams.add(new TableRecord("test", 1, "a", 0, 1, 1,  "22:55"));
+        teams.add(new Team("test", 1, "a", 0, 1, 1,  "22:55"));
     }
 
     public static void restartTurnier(){
@@ -25,7 +25,7 @@ public class Turnier{
         return instance;
     }
 
-    public ObservableList<TableRecord> getTeams(){
+    public ObservableList<Team> getTeams(){
         return this.teams;
     }
 
@@ -33,11 +33,11 @@ public class Turnier{
         return this.spiele;
     }
 
-    public void addTeam(TableRecord newTeam){
+    public void addTeam(Team newTeam){
         this.teams.add(newTeam);
     }
 
-    public void removeTeam(TableRecord team){
+    public void removeTeam(Team team){
         this.teams.remove(team);
     }
 
