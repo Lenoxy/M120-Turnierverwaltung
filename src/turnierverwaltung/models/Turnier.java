@@ -13,7 +13,7 @@ public class Turnier{
 
     public Turnier(){
         System.out.println("Turnier erstellt");
-        teams.add(new Team("test", 1, "a", 0, 1, 1,  "22:55"));
+        teams.add(new Team("test", 1, "a", 0, 1, 1,  "22:55", "Bucher"));
     }
 
     public static void restartTurnier(){
