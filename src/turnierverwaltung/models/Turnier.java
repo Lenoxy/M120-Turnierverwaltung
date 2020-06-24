@@ -8,6 +8,16 @@ public class Turnier{
     private ObservableList<TableRecord> teams = FXCollections.observableArrayList();
     private ObservableList<Spiel> spiele = FXCollections.observableArrayList();
 
+    public ObservableList<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(ObservableList<Group> groups) {
+        this.groups = groups;
+    }
+
+    private ObservableList<Group> groups = FXCollections.observableArrayList();
+
     public Turnier(){
         // Testdata
         teams.add(new TableRecord("test", 1, "a", 0, 1, 1,  "22:55"));
@@ -41,7 +51,7 @@ public class Turnier{
         this.spiele.remove(spiel);
     }
 
-    public void setSpiel (Spiel spiel){
+    public void setSpiel(Spiel spiel){
         this.spiele.add(spiel);
     }
 }
