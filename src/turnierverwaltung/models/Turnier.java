@@ -6,6 +6,8 @@ import javafx.collections.ObservableList;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import java.util.Comparator;
+
 public class Turnier{
     private static Turnier instance;
     private ObservableList<Team> teams = FXCollections.observableArrayList();
@@ -14,9 +16,25 @@ public class Turnier{
     private int pointsPerDraw = 1;
     private int pointsPerLoss = 0;
 
+    public ObservableList<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(ObservableList<Group> groups) {
+        this.groups = groups;
+    }
+
+    private ObservableList<Group> groups = FXCollections.observableArrayList();
+
     public Turnier(){
         System.out.println("Turnier erstellt");
-        teams.add(new Team("test", 1, "a", 0, 1, 1, "22:55", "Bucher"));
+        teams.add(new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher"));
+        teams.add(new Team("test2", 2, "a", 0, 1, 1,  "22:55", "Bucher"));
+        teams.add(new Team("test3", 4, "a", 0, 1, 1,  "22:55", "Bucher"));
+        teams.add(new Team("test4", 3, "a", 0, 1, 1,  "22:55", "Bucher"));
+        teams.add(new Team("test5", 8, "a", 0, 1, 1,  "22:55", "Bucher"));
+        teams.add(new Team("test6", 6, "a", 0, 1, 1,  "22:55", "Bucher"));
+        teams.add(new Team("test7", 4, "a", 0, 1, 1,  "22:55", "Bucher"));
     }
 
     public static void restartTurnier(){
@@ -59,6 +77,9 @@ public class Turnier{
     }
 
     public ObservableList<Team> getTeams(){
+        Comparator<Team> comparator = Comparator.comparingInt(Team::getPoints);
+        comparator = comparator.reversed();
+        this.teams.sort(comparator);
         return this.teams;
     }
 
