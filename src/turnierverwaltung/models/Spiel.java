@@ -1,28 +1,28 @@
 package turnierverwaltung.models;
 
 public class Spiel{
-    private TableRecord team1;
-    private TableRecord team2;
+    private Team team1;
+    private Team team2;
     private Resultat resultat;
 
-    public Spiel(TableRecord team1, TableRecord team2){
+    public Spiel(Team team1, Team team2){
         this.setTeam1(team1);
         this.setTeam2(team2);
     }
 
-    public TableRecord getTeam1(){
+    public Team getTeam1(){
         return team1;
     }
 
-    public void setTeam1(TableRecord team1){
+    public void setTeam1(Team team1){
         this.team1 = team1;
     }
 
-    public TableRecord getTeam2(){
+    public Team getTeam2(){
         return team2;
     }
 
-    public void setTeam2(TableRecord team2){
+    public void setTeam2(Team team2){
         this.team2 = team2;
     }
 

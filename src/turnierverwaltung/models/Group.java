@@ -20,17 +20,17 @@ public class Group {
 
     private String name;
 
-    public ObservableList<TableRecord> getTeams() {
+    public ObservableList<Team> getTeams() {
         return teams;
     }
 
-    public void setTeams(TableRecord teams) {
+    public void setTeams(Team teams) {
         this.teams.add(teams);
     }
 
     public int getGroupSize () {
         return getTeams().size();
     }
-    private ObservableList<TableRecord> teams;
+    private ObservableList<Team> teams;
 
 }

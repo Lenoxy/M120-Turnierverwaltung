@@ -3,7 +3,7 @@ package turnierverwaltung.models;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class TableRecord {
+public class Team{
 
     private SimpleStringProperty teamName;
     private SimpleIntegerProperty points;
@@ -12,8 +12,9 @@ public class TableRecord {
     private SimpleIntegerProperty losses;
     private SimpleIntegerProperty draws;
     private SimpleStringProperty goalDifferential;
+    private SimpleStringProperty trainer;
 
-    public TableRecord(){
+    public Team(){
         this.teamName = new SimpleStringProperty();
         this.points = new SimpleIntegerProperty();
         this.group = new SimpleStringProperty();
@@ -21,9 +22,10 @@ public class TableRecord {
         this.losses = new SimpleIntegerProperty();
         this.draws = new SimpleIntegerProperty();
         this.goalDifferential = new SimpleStringProperty();
+        this.trainer = new SimpleStringProperty();
     }
 
-    public TableRecord (String teamName, int points, String group, int victories, int losses, int draws, String goalDifferential) {
+    public Team(String teamName, int points, String group, int victories, int losses, int draws, String goalDifferential, String trainer) {
 
         this.teamName = new SimpleStringProperty(teamName);
         this.points = new SimpleIntegerProperty(points);
@@ -32,6 +34,7 @@ public class TableRecord {
         this.losses = new SimpleIntegerProperty(losses);
         this.draws = new SimpleIntegerProperty(draws);
         this.goalDifferential = new SimpleStringProperty(goalDifferential);
+        this.trainer = new SimpleStringProperty(trainer);
     }
 
     public String getTeamName() {
@@ -117,5 +120,17 @@ public class TableRecord {
 
     public void setGoalDifferential(String goalDifferential) {
         this.goalDifferential.set(goalDifferential);
+    }
+
+    public String getTrainer(){
+        return trainer.get();
+    }
+
+    public SimpleStringProperty trainerProperty(){
+        return trainer;
+    }
+
+    public void setTrainer(String trainer){
+        this.trainer.set(trainer);
     }
 }
