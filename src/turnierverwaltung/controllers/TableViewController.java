@@ -61,15 +61,7 @@ public class TableViewController implements Initializable {
         tableViewTabelle.setItems(Turnier.getInstance().getTeams());
     }
 
-<<<<<<< HEAD
     private void setupTableSpielplan() {
-=======
-        System.out.println(team1);
-        System.out.println(teamNameColumn);
-
-
-        // Spielplan
->>>>>>> 3731697271c6ffacc0477218b476157edaa51e3b
         team1.setCellValueFactory(new PropertyValueFactory<Spiel, String>("team1"));
         team2.setCellValueFactory(new PropertyValueFactory<Spiel, String>("team2"));
         result.setCellValueFactory(new PropertyValueFactory<Spiel, String>("resultat"));
