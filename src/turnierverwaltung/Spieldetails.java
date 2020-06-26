@@ -8,9 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import turnierverwaltung.models.Resultat;
 import turnierverwaltung.models.Spiel;
-import turnierverwaltung.models.Turnier;
 
 public class Spieldetails extends Application{
     public static Spiel game;

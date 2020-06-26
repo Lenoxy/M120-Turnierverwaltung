@@ -1,5 +1,6 @@
 package turnierverwaltung.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Spiel{
@@ -13,8 +14,9 @@ public class Spiel{
     }
 
 
-    public Date getTime() {
-        return time;
+    public String getTime() {
+        SimpleDateFormat format = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        return format.format(this.time);
     }
 
     public void setTime(Date time) {
