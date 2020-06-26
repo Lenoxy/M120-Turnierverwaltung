@@ -12,6 +12,7 @@ public class Turnier{
     private static Turnier instance;
     private ObservableList<Team> teams = FXCollections.observableArrayList();
     private ObservableList<Spiel> spiele = FXCollections.observableArrayList();
+    private ObservableList<Group> groups = FXCollections.observableArrayList();
     private int pointsPerVictory = 3;
     private int pointsPerDraw = 1;
     private int pointsPerLoss = 0;
@@ -24,7 +25,6 @@ public class Turnier{
         this.groups = groups;
     }
 
-    private ObservableList<Group> groups = FXCollections.observableArrayList();
 
     public Turnier(){
         System.out.println("Turnier erstellt");
@@ -55,6 +55,10 @@ public class Turnier{
     }
 
     private void reshuffleGroups(){
+        this.groups.removeAll();
+        this.spiele.removeAll();
+
+
         final char[] groupNames = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K'};
         double teamAmount = this.teams.size();
         double groupAmmount = Math.ceil(teamAmount / 5);
@@ -62,28 +66,39 @@ public class Turnier{
         System.out.println("Groups: " + groupAmmount);
         double teamsPerGroup = Math.floor(teamAmount / groupAmmount);
         System.out.println("Teams Per Group: " + teamsPerGroup);
-
         double teamsModulo = teamAmount % groupAmmount;
         System.out.println("Mod: " + teamsModulo);
 
         double overflowTeams = teamsModulo;
         int teamCounter = 0;
         for(int groupCounter = 1; groupCounter <= groupAmmount; groupCounter++){
+            Group group = new Group(groupNames[groupCounter-1]);
 
             while(teamCounter < (groupCounter * teamsPerGroup) + overflowTeams){
-                setTeamGroup(this.teams.get(teamCounter), String.valueOf(groupNames[groupCounter-1]));
+                setTeamGroup(this.teams.get(teamCounter), group);
                 teamCounter++;
             }
             if(groupCounter==0){
                 overflowTeams=0;
             }
+            this.groups.add(group);
         }
     }
 
-    private void setTeamGroup(Team team, String group){
-        team.setGroup(group);
-        System.out.println(team.getTeamName() + "  :  " + group);
+    private void setTeamGroup(Team team, Group group){
+        team.setGroup(String.valueOf(group.getName()));
+        group.addTeam(team);
+        System.out.println(team.getTeamName() + "  :  " + group.getName());
+    }
 
+    private void generateGames(){
+        for(int groupCounter = 0; groupCounter < this.groups.size(); groupCounter++){
+            Group gr = this.groups.get(groupCounter);
+            //Team initialTeam = this.groups.get(0)
+            for(int teamCounter = 0; teamCounter < (this.groups.get(groupCounter).getGroupSize() - teamCounter); teamCounter++){
+                    this.spiele.add(new Spiel(gr.getTeamAt(teamCounter), gr.getTeamAt(teamCounter+1)));
+            }
+        }
     }
 
     public static Turnier getInstance(){

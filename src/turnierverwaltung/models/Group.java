@@ -1,36 +1,45 @@
 package turnierverwaltung.models;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Map;
 
 public class Group {
 
-    public Group(String name) {
+    private char name;
+    private ObservableList<Team> teams = FXCollections.observableArrayList();
+
+    public Group(char name) {
         this.setName(name);
     }
 
-    public String getName() {
+
+    public int getGroupSize () {
+        return getTeams().size();
+    }
+
+
+    public Team getTeamAt(int i){
+        return teams.get(i);
+    }
+
+    public char getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(char name) {
         this.name = name;
     }
-
-    private String name;
 
     public ObservableList<Team> getTeams() {
         return teams;
     }
 
-    public void setTeams(Team teams) {
+    public void addTeam(Team teams) {
         this.teams.add(teams);
     }
 
-    public int getGroupSize () {
-        return getTeams().size();
-    }
-    private ObservableList<Team> teams;
+
 
 }
