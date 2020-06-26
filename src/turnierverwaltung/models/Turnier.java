@@ -66,9 +66,6 @@ public class Turnier{
                 overflowTeams=0;
             }
         }
-        System.out.println("DEBUG: teamCounter: " + teamCounter);
-
-
     }
 
     private void setTeamGroup(Team team, String group){
