@@ -1,8 +1,13 @@
 package turnierverwaltung.models;
 
 public class Resultat{
-    private int team1Punkte;
-    private int team2Punkte;
+    private int team1Punkte = 1;
+    private int team2Punkte = 1;
+
+    public Resultat(int scoreTeamOne, int scoreTeamTwo) {
+        this.setTeam1Punkte(scoreTeamOne);
+        this.setTeam2Punkte(scoreTeamTwo);
+    }
 
     public int getTeam1Punkte(){
         return team1Punkte;

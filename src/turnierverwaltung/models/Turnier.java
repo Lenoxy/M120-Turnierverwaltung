@@ -25,13 +25,26 @@ public class Turnier{
 
     public Turnier(){
         System.out.println("Turnier erstellt");
-        teams.add(new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher"));
-        teams.add(new Team("test2", 2, "a", 0, 1, 1,  "22:55", "Bucher"));
-        teams.add(new Team("test3", 4, "a", 0, 1, 1,  "22:55", "Bucher"));
-        teams.add(new Team("test4", 3, "a", 0, 1, 1,  "22:55", "Bucher"));
-        teams.add(new Team("test5", 8, "a", 0, 1, 1,  "22:55", "Bucher"));
-        teams.add(new Team("test6", 6, "a", 0, 1, 1,  "22:55", "Bucher"));
-        teams.add(new Team("test7", 4, "a", 0, 1, 1,  "22:55", "Bucher"));
+        Team teamOne = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
+        Team teamTwo = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
+        Team teamThree = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
+        Team teamFour = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
+        Team teamFive = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
+        Team teamSix = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
+        Team teamSeven = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
+        Team teamEight = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
+        teams.add(teamOne);
+        teams.add(teamTwo);
+        teams.add(teamThree);
+        teams.add(teamFive);
+        teams.add(teamSix);
+        teams.add(teamSeven);
+        teams.add(teamEight);
+
+        spiele.add(new Spiel(teamOne, teamTwo));
+        spiele.add(new Spiel(teamThree, teamFour));
+        spiele.add(new Spiel(teamFive, teamSix));
+        spiele.add(new Spiel(teamSeven, teamEight));
     }
 
     public static void restartTurnier(){
@@ -51,6 +64,9 @@ public class Turnier{
     }
 
     public ObservableList<Spiel> getSpiele(){
+        Comparator<Spiel> comparator = Comparator.comparingLong(Spiel::getTimeAsLong);
+
+        this.spiele.sort(comparator);
         return this.spiele;
     }
 
