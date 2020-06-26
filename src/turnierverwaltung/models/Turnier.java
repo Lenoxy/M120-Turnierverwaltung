@@ -28,14 +28,14 @@ public class Turnier{
 
     public Turnier(){
         System.out.println("Turnier erstellt");
-        Team teamOne = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamTwo = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamThree = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamFour = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamFive = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamSix = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamSeven = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamEight = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
+        Team teamOne = new Team("test1", 0, "a", 0, 0, 0,  "22:55", "Bucher");
+        Team teamTwo = new Team("test2", 0, "a", 0, 0, 0,  "22:55", "Bucher");
+        Team teamThree = new Team("test3", 0, "a", 0, 0, 0,  "22:55", "Bucher");
+        Team teamFour = new Team("test4", 0, "a", 0, 0, 0,  "22:55", "Bucher");
+        Team teamFive = new Team("test5", 0, "a", 0, 0, 0,  "22:55", "Bucher");
+        Team teamSix = new Team("test6", 0, "a", 0, 0, 0,  "22:55", "Bucher");
+        Team teamSeven = new Team("test7", 0, "a", 0, 0, 0,  "22:55", "Bucher");
+        Team teamEight = new Team("test8", 0, "a", 0, 0, 0,  "22:55", "Bucher");
         teams.add(teamOne);
         teams.add(teamTwo);
         teams.add(teamThree);
