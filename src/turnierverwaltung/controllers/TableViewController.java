@@ -10,10 +10,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import turnierverwaltung.Spieldetails;
+import turnierverwaltung.models.Spiel;
 import turnierverwaltung.models.Team;
 import turnierverwaltung.models.Turnier;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,10 +31,16 @@ public class TableViewController implements Initializable{
     TableColumn<Team, String> teamNameColumn, pointsColumn, groupColumn, victoriesColumn, lossesColumn, drawsColumn, goalDifferentialColumn;
 
     // Spielplan
+    @FXML
+    TableView<Spiel> spielplanTableView;
+
+    @FXML
+    TableColumn<Spiel, String> team1, team2, result, time;
 
     // Teams verwalten
     @FXML
     TableView<Team> teamsTableView;
+
     @FXML
     TableColumn<Team, String> teamTeamNameColumn, teamPointsColumn, teamGroupColumn;
 
@@ -52,6 +61,18 @@ public class TableViewController implements Initializable{
         goalDifferentialColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("goalDifferential"));
 
         tableViewTabelle.setItems(Turnier.getInstance().getTeams());
+
+        System.out.println(team1);
+        System.out.println(teamNameColumn);
+
+
+
+        // Spielplan
+        team1.setCellValueFactory(new PropertyValueFactory<Spiel, String>("team1"));
+        team2.setCellValueFactory(new PropertyValueFactory<Spiel, String>("team2"));
+        result.setCellValueFactory(new PropertyValueFactory<Spiel, String>("resultat"));
+        time.setCellValueFactory(new PropertyValueFactory<Spiel, String>("time"));
+        spielplanTableView.setItems(Turnier.getInstance().getSpiele());
 
         // Teams verwalten
         teamTeamNameColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("teamName"));
@@ -122,4 +143,14 @@ public class TableViewController implements Initializable{
             System.out.println(ex);
         }
     }
+
+    @FXML
+    public void editGame() throws Exception {
+        Spiel game = spielplanTableView.getSelectionModel().getSelectedItem();
+        Spieldetails spieldetails = new Spieldetails();
+        Spieldetails.game = game;
+        spieldetails.start(new Stage());
+        spielplanTableView.refresh();
+    }
+
 }

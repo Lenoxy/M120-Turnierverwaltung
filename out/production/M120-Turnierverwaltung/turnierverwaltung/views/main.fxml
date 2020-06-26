@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.control.cell.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400" prefWidth="600" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="turnierverwaltung.controllers.TableViewController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400" prefWidth="600" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="turnierverwaltung.controllers.TableViewController">
     <Tab text="Tabelle">
         <BorderPane>
             <top>
@@ -72,17 +80,57 @@
                 </Label>
             </top>
             <center>
-                <TableView fx:id="spielplanTableView" prefHeight="200" prefWidth="200" BorderPane.alignment="CENTER">
+                <TableView fx:id="spielplanTableView" prefHeight="260.0" prefWidth="560.0" BorderPane.alignment="CENTER">
                     <columns>
-                        <TableColumn prefWidth="${spielplanTableView.width*0.4}" text="Team 1" />
-                        <TableColumn prefWidth="${spielplanTableView.width*0.4}" text="Team 2" />
-                        <TableColumn prefWidth="${spielplanTableView.width*0.2}" text="Zeit" />
+                        <TableColumn fx:id="team1" prefWidth="${spielplanTableView.width*0.3}" text="Team 1">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="team1">
+
+                                </PropertyValueFactory>
+                            </cellValueFactory>
+                        </TableColumn>
+
+                        <TableColumn fx:id="team2" prefWidth="${spielplanTableView.width*0.3}" text="Team 2">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="team2">
+
+                                </PropertyValueFactory>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="result" prefWidth="${spielplanTableView.width*0.2}" text="Resultat">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="resultat">
+
+                                </PropertyValueFactory>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="time" prefWidth="${spielplanTableView.width*0.2}" text="Zeit">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="time">
+
+                                </PropertyValueFactory>
+                            </cellValueFactory>
+                        </TableColumn>
                     </columns>
                     <BorderPane.margin>
-                        <Insets bottom="20" left="20" right="20" />
+                        <Insets left="20.0" right="20.0" />
                     </BorderPane.margin>
                 </TableView>
             </center>
+         <bottom>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#editGame" text="Resultat eintragen">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets top="20.0" />
+               </BorderPane.margin>
+            </HBox>
+         </bottom>
         </BorderPane>
     </Tab>
     <Tab text="Teams verwalten">
