@@ -10,13 +10,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import turnierverwaltung.Spieldetails;
 import turnierverwaltung.models.Spiel;
 import turnierverwaltung.models.Team;
 import turnierverwaltung.models.Turnier;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
