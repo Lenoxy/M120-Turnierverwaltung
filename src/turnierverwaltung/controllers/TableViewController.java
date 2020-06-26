@@ -63,7 +63,15 @@ public class TableViewController implements Initializable {
         tableViewTabelle.setItems(Turnier.getInstance().getTeams());
     }
 
+<<<<<<< HEAD
     private void setupTableSpielplan() {
+=======
+        System.out.println(team1);
+        System.out.println(teamNameColumn);
+
+
+        // Spielplan
+>>>>>>> 3731697271c6ffacc0477218b476157edaa51e3b
         team1.setCellValueFactory(new PropertyValueFactory<Spiel, String>("team1"));
         team2.setCellValueFactory(new PropertyValueFactory<Spiel, String>("team2"));
         result.setCellValueFactory(new PropertyValueFactory<Spiel, String>("resultat"));
@@ -136,7 +144,7 @@ public class TableViewController implements Initializable {
         } else {
             // Error Sound effect
             final Runnable runnable = (Runnable) Toolkit.getDefaultToolkit().getDesktopProperty("win.sound.default");
-            if (runnable != null) {
+            if(runnable != null){
                 runnable.run();
             }
         }
@@ -157,11 +165,19 @@ public class TableViewController implements Initializable {
     }
 
     @FXML
-    public void editGame() throws Exception {
+    public void editGame() throws Exception{
         Spiel game = spielplanTableView.getSelectionModel().getSelectedItem();
-        Spieldetails spieldetails = new Spieldetails();
-        Spieldetails.game = game;
-        spieldetails.start(new Stage());
+
+        SpieldetailsController controller = new SpieldetailsController(game);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/spieldetails.fxml"));
+        loader.setController(controller);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Spieldetails");
+        stage.setResizable(false);
+        stage.setScene(new Scene(root, 300, 175));
+        stage.show();
         spielplanTableView.refresh();
     }
 

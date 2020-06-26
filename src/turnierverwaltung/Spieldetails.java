@@ -36,13 +36,5 @@ public class Spieldetails extends Application{
         launch(args);
     }
 
-    public void saveScore() {
 
-        int scoreTeamOne = Integer.parseInt(textFieldTeamOne.getText());
-        int scoreTeamTwo = Integer.parseInt(textFieldTeamTwo.getText());
-        // game.setResultat(new Resultat(scoreTeamOne, scoreTeamTwo));
-       //  this.stage.close();
-
-
-    }
 }
