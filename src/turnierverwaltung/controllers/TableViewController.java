@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import turnierverwaltung.models.Resultat;
 import turnierverwaltung.models.Spiel;
 import turnierverwaltung.models.Team;
 import turnierverwaltung.models.Turnier;
@@ -174,7 +175,9 @@ public class TableViewController implements Initializable {
         stage.setResizable(false);
         stage.setScene(new Scene(root, 300, 175));
         stage.show();
-        spielplanTableView.refresh();
+
+        SpieldetailsController.tableView = spielplanTableView;
+
     }
 
 }

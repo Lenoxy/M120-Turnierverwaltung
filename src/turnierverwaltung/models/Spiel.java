@@ -13,6 +13,10 @@ public class Spiel{
         return this.time.getTime();
     }
 
+    public Resultat getResultAsObject () {
+        return this.resultat;
+    }
+
 
     public String getTime() {
         SimpleDateFormat format = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
@@ -30,6 +34,14 @@ public class Spiel{
 
     public String getTeam1(){
         return team1.getTeamName();
+    }
+
+    public Team getTeam1AsObject () {
+        return this.team1;
+    }
+
+    public Team getTeam2AsObject () {
+        return this.team2;
     }
 
     public void setTeam1(Team team1){
