@@ -2,9 +2,7 @@ package turnierverwaltung.models;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import turnierverwaltung.controllers.TableViewController;
 
 import java.util.Comparator;
 
@@ -27,15 +25,14 @@ public class Turnier{
 
 
     public Turnier(){
-        System.out.println("Turnier erstellt");
-        Team teamOne = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamTwo = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamThree = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamFour = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamFive = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamSix = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamSeven = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
-        Team teamEight = new Team("test1", 1, "a", 0, 1, 1,  "22:55", "Bucher");
+        Team teamOne = new Team("1", 1, "A", 0, 1, 1,  "22:55", "Bucher");
+        Team teamTwo = new Team("2", 1, "A", 0, 1, 1,  "22:55", "Bucher");
+        Team teamThree = new Team("3", 1, "A", 0, 1, 1,  "22:55", "Bucher");
+        Team teamFour = new Team("4", 1, "A", 0, 1, 1,  "22:55", "Bucher");
+        Team teamFive = new Team("5", 1, "A", 0, 1, 1,  "22:55", "Bucher");
+        Team teamSix = new Team("6", 1, "A", 0, 1, 1,  "22:55", "Bucher");
+        Team teamSeven = new Team("7", 1, "A", 0, 1, 1,  "22:55", "Bucher");
+        Team teamEight = new Team("8", 1, "A", 0, 1, 1,  "22:55", "Bucher");
         teams.add(teamOne);
         teams.add(teamTwo);
         teams.add(teamThree);
@@ -48,6 +45,8 @@ public class Turnier{
         spiele.add(new Spiel(teamThree, teamFour));
         spiele.add(new Spiel(teamFive, teamSix));
         spiele.add(new Spiel(teamSeven, teamEight));
+
+        System.out.println("Turnier erstellt");
     }
 
     public static void restartTurnier(){
@@ -55,8 +54,8 @@ public class Turnier{
     }
 
     private void reshuffleGroups(){
-        this.groups.removeAll();
-        this.spiele.removeAll();
+        this.groups = FXCollections.observableArrayList();
+        this.spiele = FXCollections.observableArrayList();
 
 
         final char[] groupNames = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K'};
@@ -83,6 +82,7 @@ public class Turnier{
             }
             this.groups.add(group);
         }
+        this.generateGames();
     }
 
     private void setTeamGroup(Team team, Group group){
@@ -92,13 +92,15 @@ public class Turnier{
     }
 
     private void generateGames(){
-        for(int groupCounter = 0; groupCounter < this.groups.size(); groupCounter++){
-            Group gr = this.groups.get(groupCounter);
-            //Team initialTeam = this.groups.get(0)
-            for(int teamCounter = 0; teamCounter < (this.groups.get(groupCounter).getGroupSize() - teamCounter); teamCounter++){
-                    this.spiele.add(new Spiel(gr.getTeamAt(teamCounter), gr.getTeamAt(teamCounter+1)));
+        this.spiele = FXCollections.observableArrayList();
+        for(Group group : this.groups){
+            for(int teamCounter = 0; teamCounter < group.getGroupSize()-1; teamCounter++){
+                for(int innerCounter = teamCounter+1; innerCounter < group.getGroupSize() ; innerCounter++){
+                    this.spiele.add(new Spiel(group.getTeamAt(teamCounter), group.getTeamAt(innerCounter)));
+                }
             }
         }
+        TableViewController.instance.tableViewTabelle.refresh();
     }
 
     public static Turnier getInstance(){
