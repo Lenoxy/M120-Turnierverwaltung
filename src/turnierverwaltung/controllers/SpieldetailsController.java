@@ -1,5 +1,6 @@
 package turnierverwaltung.controllers;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -56,6 +57,18 @@ public class SpieldetailsController implements Initializable{
         System.out.println(GAME);
         team1Name.setText(GAME.getTeam1());
         team2Name.setText(GAME.getTeam2());
+
+        textFieldTeamOne.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*") || newValue.isEmpty()) {
+                textFieldTeamOne.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
+        textFieldTeamTwo.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*") || newValue.isEmpty()) {
+                textFieldTeamTwo.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
     }
 
     public void saveScore() {
