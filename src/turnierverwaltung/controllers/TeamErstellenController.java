@@ -30,6 +30,7 @@ public class TeamErstellenController implements Initializable {
     public  TeamErstellenController(Stage newStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/teamErstellen.fxml"));
         Parent root = fxmlLoader.load();
+        newStage.setTitle("Team hinzufügen");
         newStage.setScene(new Scene(root));
         newStage.show();
     }

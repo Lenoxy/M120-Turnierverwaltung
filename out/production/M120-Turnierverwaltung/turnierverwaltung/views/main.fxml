@@ -68,28 +68,34 @@
     <Tab text="Spielplan">
         <BorderPane>
             <top>
-                <Label text="Spielplan" BorderPane.alignment="CENTER">
-                    <font>
-                        <Font size="28" />
-                    </font>
-                </Label>
+                <HBox spacing="10">
+                    <Label text="Spielplan" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                        <font>
+                            <Font size="28"/>
+                        </font>
+                    </Label>
+                    <Button fx:id="editGame" alignment="CENTER" contentDisplay="TOP" onAction="#editGame" text="Resultat Eintragen">
+                        <HBox.margin>
+                            <Insets left="540.0" top="7.0" />
+                        </HBox.margin>
+                    </Button>
+                    <BorderPane.margin>
+                        <Insets left="20.0" right="20.0" />
+                    </BorderPane.margin>
+                </HBox>
             </top>
             <center>
                 <TableView fx:id="spielplanTableView" prefHeight="260.0" prefWidth="560.0" BorderPane.alignment="CENTER">
                     <columns>
                         <TableColumn fx:id="team1" maxWidth="${spielplanTableView.width*0.3}" text="Team 1">
                             <cellValueFactory>
-                                <PropertyValueFactory property="team1">
-
-                                </PropertyValueFactory>
+                                <PropertyValueFactory property="team1"/>
                             </cellValueFactory>
                         </TableColumn>
 
                         <TableColumn fx:id="team2" maxWidth="${spielplanTableView.width*0.3}" text="Team 2">
                             <cellValueFactory>
-                                <PropertyValueFactory property="team2">
-
-                                </PropertyValueFactory>
+                                <PropertyValueFactory property="team2"/>
                             </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="result" maxWidth="${spielplanTableView.width*0.1}" text="Resultat">
@@ -108,24 +114,10 @@
                         </TableColumn>
                     </columns>
                     <BorderPane.margin>
-                        <Insets left="20.0" right="20.0" />
+                        <Insets bottom="20" left="20" right="20" />
                     </BorderPane.margin>
                 </TableView>
             </center>
-         <bottom>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#editGame" text="Resultat eintragen">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-               <BorderPane.margin>
-                  <Insets top="20.0" />
-               </BorderPane.margin>
-            </HBox>
-         </bottom>
         </BorderPane>
     </Tab>
     <Tab text="Teams verwalten">
@@ -139,7 +131,7 @@
                     </Label>
                     <Button fx:id="teamHinzufuegen" alignment="CENTER" contentDisplay="TOP" onAction="#onCreateTeam" text="Team hinzufügen">
                         <HBox.margin>
-                            <Insets left="235.0" top="7.0" />
+                            <Insets left="255.0" top="7.0" />
                         </HBox.margin>
                     </Button>
                     <Button fx:id="teamEntfernen" alignment="CENTER" contentDisplay="TOP" onAction="#onRemoveSelectedTeam" text="Ausgewähltes Team entfernen">
