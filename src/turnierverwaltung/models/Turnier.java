@@ -2,9 +2,7 @@ package turnierverwaltung.models;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import turnierverwaltung.controllers.TableViewController;
 
 import java.util.Comparator;
 
@@ -12,6 +10,7 @@ public class Turnier{
     private static Turnier instance;
     private ObservableList<Team> teams = FXCollections.observableArrayList();
     private ObservableList<Spiel> spiele = FXCollections.observableArrayList();
+    private ObservableList<Group> groups = FXCollections.observableArrayList();
     private int pointsPerVictory = 3;
     private int pointsPerDraw = 1;
     private int pointsPerLoss = 0;
@@ -24,7 +23,6 @@ public class Turnier{
         this.groups = groups;
     }
 
-    private ObservableList<Group> groups = FXCollections.observableArrayList();
 
     public Turnier(){
         System.out.println("Turnier erstellt");
@@ -39,6 +37,7 @@ public class Turnier{
         teams.add(teamOne);
         teams.add(teamTwo);
         teams.add(teamThree);
+        teams.add(teamFour);
         teams.add(teamFive);
         teams.add(teamSix);
         teams.add(teamSeven);
@@ -48,6 +47,8 @@ public class Turnier{
         spiele.add(new Spiel(teamThree, teamFour));
         spiele.add(new Spiel(teamFive, teamSix));
         spiele.add(new Spiel(teamSeven, teamEight));
+
+        System.out.println("Turnier erstellt");
     }
 
     public static void restartTurnier(){
@@ -55,6 +56,10 @@ public class Turnier{
     }
 
     private void reshuffleGroups(){
+        this.groups = FXCollections.observableArrayList();
+        this.spiele = FXCollections.observableArrayList();
+
+
         final char[] groupNames = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K'};
         double teamAmount = this.teams.size();
         double groupAmmount = Math.ceil(teamAmount / 5);
@@ -62,28 +67,42 @@ public class Turnier{
         System.out.println("Groups: " + groupAmmount);
         double teamsPerGroup = Math.floor(teamAmount / groupAmmount);
         System.out.println("Teams Per Group: " + teamsPerGroup);
-
         double teamsModulo = teamAmount % groupAmmount;
         System.out.println("Mod: " + teamsModulo);
 
         double overflowTeams = teamsModulo;
         int teamCounter = 0;
         for(int groupCounter = 1; groupCounter <= groupAmmount; groupCounter++){
+            Group group = new Group(groupNames[groupCounter-1]);
 
             while(teamCounter < (groupCounter * teamsPerGroup) + overflowTeams){
-                setTeamGroup(this.teams.get(teamCounter), String.valueOf(groupNames[groupCounter-1]));
+                setTeamGroup(this.teams.get(teamCounter), group);
                 teamCounter++;
             }
             if(groupCounter==0){
                 overflowTeams=0;
             }
+            this.groups.add(group);
         }
+        this.generateGames();
     }
 
-    private void setTeamGroup(Team team, String group){
-        team.setGroup(group);
-        System.out.println(team.getTeamName() + "  :  " + group);
+    private void setTeamGroup(Team team, Group group){
+        team.setGroup(String.valueOf(group.getName()));
+        group.addTeam(team);
+        System.out.println(team.getTeamName() + "  :  " + group.getName());
+    }
 
+    private void generateGames(){
+        this.spiele = FXCollections.observableArrayList();
+        for(Group group : this.groups){
+            for(int teamCounter = 0; teamCounter < group.getGroupSize()-1; teamCounter++){
+                for(int innerCounter = teamCounter+1; innerCounter < group.getGroupSize() ; innerCounter++){
+                    this.spiele.add(new Spiel(group.getTeamAt(teamCounter), group.getTeamAt(innerCounter)));
+                }
+            }
+        }
+        TableViewController.instance.tableViewTabelle.refresh();
     }
 
     public static Turnier getInstance(){

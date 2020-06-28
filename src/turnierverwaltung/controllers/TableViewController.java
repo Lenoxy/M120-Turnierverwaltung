@@ -24,10 +24,15 @@ import java.util.ResourceBundle;
 
 public class TableViewController implements Initializable {
 
+     public static TableViewController instance;
+
+     public TableViewController(){
+         instance = this;
+     }
 
     //Tabelle
     @FXML
-    TableView<Team> tableViewTabelle;
+    public TableView<Team> tableViewTabelle;
     @FXML
     TableColumn<Team, String> teamNameColumn, pointsColumn, groupColumn, victoriesColumn, lossesColumn, drawsColumn;
 
@@ -131,6 +136,7 @@ public class TableViewController implements Initializable {
         Team selected = teamsTableView.getSelectionModel().getSelectedItem();
         if (selected != null) {
             Turnier.getInstance().removeTeam(selected);
+            spielplanTableView.refresh();
         } else {
             // Error Sound effect
             final Runnable runnable = (Runnable) Toolkit.getDefaultToolkit().getDesktopProperty("win.sound.default");
@@ -141,7 +147,7 @@ public class TableViewController implements Initializable {
 
     }
 
-    public void onCreateTeam(Event e) throws IOException {
+    public void onCreateTeam(Event e) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../views/teamErstellen.fxml"));
             Stage stage = new Stage();
