@@ -55,6 +55,8 @@ public class SpieldetailsController implements Initializable{
     public void initialize(URL location, ResourceBundle resources){
         System.out.println("test: " + team1Name.getText());
         System.out.println(GAME);
+        team1Name.setText(GAME.getTeam1());
+        team2Name.setText(GAME.getTeam2());
     }
 
     public void saveScore() {
@@ -65,12 +67,6 @@ public class SpieldetailsController implements Initializable{
         evaluateGames();
         tableView.refresh();
         STAGE.close();
-
-
-        // game.setResultat(new Resultat(scoreTeamOne, scoreTeamTwo));
-        //  this.stage.close();
-
-
     }
 
     private void evaluateGames () {
