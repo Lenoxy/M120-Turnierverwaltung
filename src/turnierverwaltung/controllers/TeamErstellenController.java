@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import turnierverwaltung.models.Team;
 import turnierverwaltung.models.Turnier;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +24,7 @@ public class TeamErstellenController implements Initializable {
     @FXML
     private TextField textFieldTeamName;
 
+    // Do not Delete, it is required. Trust me.
     public TeamErstellenController() {
 
     }
@@ -36,11 +38,19 @@ public class TeamErstellenController implements Initializable {
     }
 
     public void onSaveTeam () {
-        Team team = new Team();
-        team.setTeamName(textFieldTeamName.getText());
-        team.setTrainer(textFieldCoach.getText());
-        Turnier.getInstance().addTeam(team);
-        this.closeWindow();
+        if(! textFieldCoach.getText().equals("") && ! textFieldTeamName.getText().equals("")){
+            Team team = new Team();
+            team.setTeamName(textFieldTeamName.getText());
+            team.setTrainer(textFieldCoach.getText());
+            Turnier.getInstance().addTeam(team);
+            this.closeWindow();
+        }else{
+            // Error Sound effect
+            final Runnable runnable = (Runnable) Toolkit.getDefaultToolkit().getDesktopProperty("win.sound.default");
+            if(runnable != null){
+                runnable.run();
+            }
+        }
     }
 
     private void closeWindow(){
