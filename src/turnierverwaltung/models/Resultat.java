@@ -1,8 +1,11 @@
 package turnierverwaltung.models;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class Resultat{
-    private int team1Punkte = 0;
-    private int team2Punkte = 0;
+    private IntegerProperty team1Punkte = new SimpleIntegerProperty();
+    private IntegerProperty team2Punkte = new SimpleIntegerProperty();
 
     public boolean isGamePlayed() {
         return gamePlayed;
@@ -22,20 +25,20 @@ public class Resultat{
     }
 
     public int getTeam1Punkte(){
-        return team1Punkte;
+        return team1Punkte.get();
     }
 
     public void setTeam1Punkte(int team1Punkte){
         this.setGamePlayed(true);
-        this.team1Punkte = team1Punkte;
+        this.team1Punkte.set(team1Punkte);
     }
 
     public int getTeam2Punkte(){
-        return team2Punkte;
+        return team2Punkte.get();
     }
 
     public void setTeam2Punkte(int team2Punkte){
         this.setGamePlayed(true);
-        this.team2Punkte = team2Punkte;
+        this.team2Punkte.set(team2Punkte);
     }
 }
