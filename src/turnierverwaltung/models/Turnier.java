@@ -2,10 +2,8 @@ package turnierverwaltung.models;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import turnierverwaltung.controllers.TableViewController;
+import turnierverwaltung.controllers.MainController;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class Turnier{
@@ -22,7 +20,6 @@ public class Turnier{
     }
 
     public Turnier(){
-
     }
 
     public static Turnier getInstance(){
@@ -42,12 +39,12 @@ public class Turnier{
 
     public void addTeam(Team newTeam){
         this.teams.add(newTeam);
-        TableViewController.instance.reshuffleGroups();
+        MainController.instance.reshuffleGroups();
     }
 
     public void removeTeam(Team team){
         this.teams.remove(team);
-        TableViewController.instance.reshuffleGroups();
+        MainController.instance.reshuffleGroups();
     }
 
     public int getPointsPerVictory(){

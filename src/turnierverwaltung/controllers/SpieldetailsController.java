@@ -16,7 +16,6 @@ import turnierverwaltung.models.Turnier;
 
 import java.io.IOException;
 import java.net.URL;
-import java.rmi.server.ExportException;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 
@@ -35,7 +34,7 @@ public class SpieldetailsController implements Initializable{
     }
 
 
-    public SpieldetailsController(Spiel game) throws IOException {
+    public SpieldetailsController(Spiel game){
         GAME = game;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/spieldetails.fxml"));

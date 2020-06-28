@@ -23,11 +23,11 @@ import java.net.URL;
 import java.util.*;
 import java.util.List;
 
-public class TableViewController implements Initializable {
+public class MainController implements Initializable {
 
-     public static TableViewController instance;
+     public static MainController instance;
 
-     public TableViewController(){
+     public MainController(){
          instance = this;
      }
 
@@ -130,9 +130,17 @@ public class TableViewController implements Initializable {
     }
 
     public void onTurnierNeustarten() {
-        Turnier.getInstance().getTeams().clear();
-        Turnier.getInstance().getGroups().clear();
-        Turnier.getInstance().getSpiele().clear();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Warnung");
+        alert.setHeaderText("Möchten Sie das Turnier wirklich neustarten?");
+        alert.setContentText("Alle erstellten Teams, Gruppen und gespielte Mätche werden unwiederruflich gelöscht.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Turnier.getInstance().getTeams().clear();
+            Turnier.getInstance().getGroups().clear();
+            Turnier.getInstance().getSpiele().clear();
+        }
+
     }
 
     public void onRemoveSelectedTeam(Event e) {
@@ -155,12 +163,18 @@ public class TableViewController implements Initializable {
     }
 
     @FXML
-    public void editGame() throws Exception{
+    public void editGame(){
         Spiel game = spielplanTableView.getSelectionModel().getSelectedItem();
-        System.out.println(game);
-        SpieldetailsController controller = new SpieldetailsController(game);
-
-        SpieldetailsController.tableView = spielplanTableView;
+        if (game != null) {
+            new SpieldetailsController(game);
+            SpieldetailsController.tableView = spielplanTableView;
+        } else {
+            // Error Sound effect
+            final Runnable runnable = (Runnable) Toolkit.getDefaultToolkit().getDesktopProperty("win.sound.default");
+            if(runnable != null){
+                runnable.run();
+            }
+        }
 
     }
 
@@ -213,7 +227,7 @@ public class TableViewController implements Initializable {
                 }
             }
         }
-        TableViewController.instance.tableViewTabelle.refresh();
+        MainController.instance.tableViewTabelle.refresh();
     }
 
     private void arrangeTime(ObservableList<Spiel> spiele) {

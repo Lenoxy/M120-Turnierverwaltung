@@ -3,8 +3,6 @@ package turnierverwaltung.models;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.Map;
-
 public class Group {
 
     private char name;

@@ -7,9 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import turnierverwaltung.models.Turnier;
 import javafx.stage.Stage;
 import turnierverwaltung.models.Team;
+import turnierverwaltung.models.Turnier;
 
 import java.io.IOException;
 import java.net.URL;
