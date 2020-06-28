@@ -32,34 +32,29 @@
                                 <PropertyValueFactory property="teamName" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="pointsColumn" prefWidth="${tableViewTabelle.width*0.1}" text="Punkte">
+                        <TableColumn fx:id="pointsColumn" prefWidth="${tableViewTabelle.width*0.15}" text="Punkte">
                             <cellValueFactory>
                                 <PropertyValueFactory property="points" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="groupColumn" prefWidth="${tableViewTabelle.width*0.1}" text="Gruppe">
+                        <TableColumn fx:id="groupColumn" prefWidth="${tableViewTabelle.width*0.15}" text="Gruppe">
                             <cellValueFactory>
                                 <PropertyValueFactory property="groups" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="victoriesColumn" prefWidth="${tableViewTabelle.width*0.1332}" text="Sieg">
+                        <TableColumn fx:id="victoriesColumn" prefWidth="${tableViewTabelle.width*0.15}" text="Sieg">
                             <cellValueFactory>
                                 <PropertyValueFactory property="victories" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="drawsColumn" prefWidth="${tableViewTabelle.width*0.1332}" text="Unentschieden">
+                        <TableColumn fx:id="drawsColumn" prefWidth="${tableViewTabelle.width*0.15}" text="Unentschieden">
                             <cellValueFactory>
                                 <PropertyValueFactory property="draws" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="lossesColumn" prefWidth="${tableViewTabelle.width*0.1332}" text="Niederlage">
+                        <TableColumn fx:id="lossesColumn" prefWidth="${tableViewTabelle.width*0.15}" text="Niederlage">
                             <cellValueFactory>
                                 <PropertyValueFactory property="losses" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="goalDifferentialColumn" prefWidth="${tableViewTabelle.width*0.145}" text="Torverhältnis">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="goalDifferential" />
                             </cellValueFactory>
                         </TableColumn>
                     </columns>

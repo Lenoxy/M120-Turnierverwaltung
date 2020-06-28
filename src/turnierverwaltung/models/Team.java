@@ -11,7 +11,6 @@ public class Team{
     private SimpleIntegerProperty victories;
     private SimpleIntegerProperty losses;
     private SimpleIntegerProperty draws;
-    private SimpleStringProperty goalDifferential;
     private SimpleStringProperty trainer;
 
     public Team(){
@@ -21,18 +20,16 @@ public class Team{
         this.victories = new SimpleIntegerProperty();
         this.losses = new SimpleIntegerProperty();
         this.draws = new SimpleIntegerProperty();
-        this.goalDifferential = new SimpleStringProperty();
         this.trainer = new SimpleStringProperty();
     }
 
-    public Team(String teamName, int points, String group, int victories, int losses, int draws, String goalDifferential, String trainer) {
+    public Team(String teamName, int points, String group, int victories, int losses, int draws, String trainer) {
         this.teamName = new SimpleStringProperty(teamName);
         this.points = new SimpleIntegerProperty(points);
         this.group = new SimpleStringProperty(group);
         this.victories = new SimpleIntegerProperty(victories);
         this.losses = new SimpleIntegerProperty(losses);
         this.draws = new SimpleIntegerProperty(draws);
-        this.goalDifferential = new SimpleStringProperty(goalDifferential);
         this.trainer = new SimpleStringProperty(trainer);
     }
 
@@ -107,18 +104,6 @@ public class Team{
 
     public void addDraw() {
         this.draws.set(this.draws.getValue() + 1);
-    }
-
-    public String getGoalDifferential() {
-        return goalDifferential.get();
-    }
-
-    public SimpleStringProperty goalDifferentialProperty() {
-        return goalDifferential;
-    }
-
-    public void setGoalDifferential(String goalDifferential) {
-        this.goalDifferential.set(goalDifferential);
     }
 
     public String getTrainer(){

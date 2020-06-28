@@ -1,8 +1,20 @@
 package turnierverwaltung.models;
 
 public class Resultat{
-    private int team1Punkte = 1;
-    private int team2Punkte = 1;
+    private int team1Punkte = 0;
+    private int team2Punkte = 0;
+
+    public boolean isGamePlayed() {
+        return gamePlayed;
+    }
+
+    public void setGamePlayed(boolean gamePlayed) {
+        this.gamePlayed = gamePlayed;
+    }
+
+    private boolean gamePlayed = false;
+
+    public Resultat() {}
 
     public Resultat(int scoreTeamOne, int scoreTeamTwo) {
         this.setTeam1Punkte(scoreTeamOne);
@@ -14,6 +26,7 @@ public class Resultat{
     }
 
     public void setTeam1Punkte(int team1Punkte){
+        this.setGamePlayed(true);
         this.team1Punkte = team1Punkte;
     }
 
@@ -22,6 +35,7 @@ public class Resultat{
     }
 
     public void setTeam2Punkte(int team2Punkte){
+        this.setGamePlayed(true);
         this.team2Punkte = team2Punkte;
     }
 }

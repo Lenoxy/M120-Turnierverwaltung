@@ -11,6 +11,7 @@ import turnierverwaltung.models.Team;
 import turnierverwaltung.models.Turnier;
 
 import java.net.URL;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class SpieldetailsController implements Initializable{
@@ -54,29 +55,32 @@ public class SpieldetailsController implements Initializable{
             Resultat result = spiel.getResultAsObject();
             int teamOne = spiel.getTeam1AsObject().getPoints();
             int teamTwo = spiel.getTeam2AsObject().getPoints();
-
-
-            if (result.getTeam1Punkte() > result.getTeam2Punkte()) {
-                spiel.getTeam1AsObject().setPoints(teamOne + Turnier.getInstance().getPointsPerVictory());
-                spiel.getTeam2AsObject().setPoints(teamTwo + Turnier.getInstance().getPointsPerLoss());
-                System.out.println(spiel.getTeam1AsObject().getPoints());
-                spiel.getTeam1AsObject().addVictory();
-                spiel.getTeam2AsObject().addLoss();
-                System.out.println("win");
-            } else if (result.getTeam1Punkte() < result.getTeam2Punkte()) {
-                spiel.getTeam2AsObject().setPoints(teamTwo + Turnier.getInstance().getPointsPerVictory());
-                spiel.getTeam1AsObject().setPoints(teamOne + Turnier.getInstance().getPointsPerLoss());
-                spiel.getTeam2AsObject().addVictory();
-                spiel.getTeam1AsObject().addLoss();
-                System.out.println("loss");
-            } else if (result.getTeam1Punkte() == result.getTeam2Punkte()) {
-                spiel.getTeam1AsObject().setPoints(teamOne + Turnier.getInstance().getPointsPerDraw());
-                spiel.getTeam2AsObject().setPoints(teamTwo + Turnier.getInstance().getPointsPerDraw());
-                spiel.getTeam1AsObject().addDraw();
-                spiel.getTeam2AsObject().addDraw();
-                System.out.println("draw");
+            if (spiel.getResultAsObject().isGamePlayed())  {
+                if (result.getTeam1Punkte() > result.getTeam2Punkte()) {
+                    spiel.getTeam1AsObject().setPoints(teamOne + Turnier.getInstance().getPointsPerVictory());
+                    spiel.getTeam2AsObject().setPoints(teamTwo + Turnier.getInstance().getPointsPerLoss());
+                    System.out.println(spiel.getTeam1AsObject().getPoints());
+                    spiel.getTeam1AsObject().addVictory();
+                    spiel.getTeam2AsObject().addLoss();
+                    System.out.println("win");
+                } else if (result.getTeam1Punkte() < result.getTeam2Punkte()) {
+                    spiel.getTeam2AsObject().setPoints(teamTwo + Turnier.getInstance().getPointsPerVictory());
+                    spiel.getTeam1AsObject().setPoints(teamOne + Turnier.getInstance().getPointsPerLoss());
+                    spiel.getTeam2AsObject().addVictory();
+                    spiel.getTeam1AsObject().addLoss();
+                    System.out.println("loss");
+                } else if (result.getTeam1Punkte() == result.getTeam2Punkte()) {
+                    spiel.getTeam1AsObject().setPoints(teamOne + Turnier.getInstance().getPointsPerDraw());
+                    spiel.getTeam2AsObject().setPoints(teamTwo + Turnier.getInstance().getPointsPerDraw());
+                    spiel.getTeam1AsObject().addDraw();
+                    spiel.getTeam2AsObject().addDraw();
+                    System.out.println("draw");
+                }
             }
         }
+        Comparator<Team> comparator = Comparator.comparingInt(Team::getPoints);
+        comparator = comparator.reversed();
+        Turnier.getInstance().getTeams().sort(comparator);
     }
 
     private void resetTeamPoints () {

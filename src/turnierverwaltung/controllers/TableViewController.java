@@ -29,7 +29,7 @@ public class TableViewController implements Initializable {
     @FXML
     TableView<Team> tableViewTabelle;
     @FXML
-    TableColumn<Team, String> teamNameColumn, pointsColumn, groupColumn, victoriesColumn, lossesColumn, drawsColumn, goalDifferentialColumn;
+    TableColumn<Team, String> teamNameColumn, pointsColumn, groupColumn, victoriesColumn, lossesColumn, drawsColumn;
 
     // Spielplan
     @FXML
@@ -58,7 +58,6 @@ public class TableViewController implements Initializable {
         victoriesColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("victories"));
         lossesColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("losses"));
         drawsColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("draws"));
-        goalDifferentialColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("goalDifferential"));
         tableViewTabelle.setItems(Turnier.getInstance().getTeams());
     }
 

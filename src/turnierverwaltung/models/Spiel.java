@@ -6,7 +6,7 @@ import java.util.Date;
 public class Spiel{
     private Team team1;
     private Team team2;
-    private Resultat resultat = new Resultat(0,0);
+    private Resultat resultat = new Resultat();
     private Date time = new Date();
 
     public long getTimeAsLong() {
