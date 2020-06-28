@@ -1,16 +1,24 @@
 package turnierverwaltung.models;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalField;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class Spiel{
     private Team team1;
     private Team team2;
     private Resultat resultat = new Resultat();
-    private Date time = new Date();
+    private LocalDateTime time = LocalDateTime.now();
 
     public long getTimeAsLong() {
-        return this.time.getTime();
+        return this.time.getLong(ChronoField.MINUTE_OF_DAY);
     }
 
     public Resultat getResultAsObject () {
@@ -19,11 +27,10 @@ public class Spiel{
 
 
     public String getTime() {
-        SimpleDateFormat format = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-        return format.format(this.time);
+        return this.time.format(DateTimeFormatter.ofPattern("dd.M.yyyy HH:mm:ss"));
     }
 
-    public void setTime(Date time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 

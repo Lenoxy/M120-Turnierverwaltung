@@ -20,6 +20,9 @@ import turnierverwaltung.models.Turnier;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 import java.util.List;
 
@@ -135,9 +138,6 @@ public class MainController implements Initializable {
         });
     }
 
-
-
-
     public void onTurnierNeustarten() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Warnung");
@@ -244,9 +244,8 @@ public class MainController implements Initializable {
        int i = 1;
         for (Spiel spiel: spiele) {
             i++;
-            long time = calendar.getTimeInMillis();
-            Date finalDate = new Date(time + (15 * 60000 * i));
-            spiel.setTime(finalDate);
+
+            spiel.setTime(LocalDateTime.of(LocalDate.now(), LocalTime.now().plusMinutes(15*i)));
         }
     }
 

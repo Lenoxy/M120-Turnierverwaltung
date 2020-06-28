@@ -14,6 +14,7 @@ import turnierverwaltung.models.Spiel;
 import turnierverwaltung.models.Team;
 import turnierverwaltung.models.Turnier;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Comparator;
@@ -52,19 +53,27 @@ public class SpieldetailsController implements Initializable{
 
 
     public void initialize(URL location, ResourceBundle resources){
-        System.out.println("test: " + team1Name.getText());
         System.out.println(GAME);
         team1Name.setText(GAME.getTeam1());
         team2Name.setText(GAME.getTeam2());
     }
 
     public void saveScore() {
-        int scoreTeamOne = Integer.parseInt(textFieldTeamOne.getText());
-        int scoreTeamTwo = Integer.parseInt(textFieldTeamTwo.getText());
+        if(!textFieldTeamOne.getText().equals("") && !textFieldTeamTwo.getText().equals("")){
+            int scoreTeamOne = Integer.parseInt(textFieldTeamOne.getText());
+            int scoreTeamTwo = Integer.parseInt(textFieldTeamTwo.getText());
 
-        GAME.setResultat(new Resultat(scoreTeamOne, scoreTeamTwo));
-        Turnier.getInstance().evaluateGames();
-        tableView.refresh();
-        STAGE.close();
+            GAME.setResultat(new Resultat(scoreTeamOne, scoreTeamTwo));
+            Turnier.getInstance().evaluateGames();
+            tableView.refresh();
+            STAGE.close();
+        }else{
+            // Error Sound effect
+            final Runnable runnable = (Runnable) Toolkit.getDefaultToolkit().getDesktopProperty("win.sound.default");
+            if(runnable != null){
+                runnable.run();
+            }
+        }
+
     }
 }
