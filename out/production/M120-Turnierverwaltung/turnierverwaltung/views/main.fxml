@@ -114,7 +114,7 @@
                         </TableColumn>
                     </columns>
                     <BorderPane.margin>
-                        <Insets bottom="20" left="20" right="20" />
+                        <Insets bottom="20" left="20" right="20"/>
                     </BorderPane.margin>
                 </TableView>
             </center>

@@ -8,31 +8,34 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="175" prefWidth="330.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="turnierverwaltung.controllers.TeamErstellenController">
+<BorderPane prefHeight="175" prefWidth="330.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="turnierverwaltung.controllers.TeamErstellenController">
     <center>
         <VBox prefHeight="150.0" prefWidth="315.0">
             <HBox>
                 <Label prefWidth="100">Teamname</Label>
-                <TextField fx:id="textFieldTeamName" prefWidth="150" />
-            <VBox.margin>
-               <Insets left="20.0" right="20.0" top="20.0" />
-            </VBox.margin>
+                <TextField fx:id="textFieldTeamName" prefWidth="150" onAction="#onSaveTeam"/>
+                <VBox.margin>
+                    <Insets left="20.0" right="20.0" top="20.0"/>
+                </VBox.margin>
             </HBox>
 
             <HBox>
                 <Label prefWidth="100">Trainer</Label>
-                <TextField fx:id="textFieldCoach" prefWidth="150" />
-            <VBox.margin>
-               <Insets left="20.0" right="20.0" top="20.0" />
-            </VBox.margin>
+                <TextField fx:id="textFieldCoach" prefWidth="150" onAction="#onSaveTeam"/>
+                <VBox.margin>
+                    <Insets left="20.0" right="20.0" top="20.0"/>
+                </VBox.margin>
             </HBox>
         </VBox>
 
     </center>
-   <bottom>
-      <Button fx:id="buttonTeamSave" mnemonicParsing="false" onAction="#onSaveTeam" text="Team speichern" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="7.0" />
-         </BorderPane.margin></Button>
-   </bottom>
+    <bottom>
+        <Button fx:id="buttonTeamSave" mnemonicParsing="false" onAction="#onSaveTeam" text="Team speichern"
+                BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="7.0"/>
+            </BorderPane.margin>
+        </Button>
+    </bottom>
 </BorderPane>

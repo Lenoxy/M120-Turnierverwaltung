@@ -57,6 +57,19 @@ public class MainController implements Initializable {
 
     List<TextField> pointsSettings = new ArrayList<>();
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        setupTableTabelle();
+        setupTableSpielplan();
+        setupTableTeamVerwalten();
+        setupSettingsTab();
+        pointsSettings.add(pointsPerDraw);
+        pointsSettings.add(pointsPerLoss);
+        pointsSettings.add(pointsPerVictory);
+        settingsTabConstraints();
+
+    }
+
     private void setupTableTabelle() {
         teamNameColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("teamName"));
         pointsColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("points"));
@@ -98,6 +111,7 @@ public class MainController implements Initializable {
             } else {
                 Turnier.getInstance().setPointsPerVictory(Integer.parseInt(newValue));
                 System.out.println("Set pointsPerWin to " + newValue);
+                Turnier.getInstance().evaluateGames();
             }
         });
 
@@ -107,6 +121,7 @@ public class MainController implements Initializable {
             } else {
                 Turnier.getInstance().setPointsPerDraw(Integer.parseInt(newValue));
                 System.out.println("Set pointsPerDraw to " + newValue);
+                Turnier.getInstance().evaluateGames();
             }
         });
         pointsPerLoss.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -115,23 +130,13 @@ public class MainController implements Initializable {
             } else {
                 Turnier.getInstance().setPointsPerLoss(Integer.parseInt(newValue));
                 System.out.println("Set pointsPerLoss to " + newValue);
+                Turnier.getInstance().evaluateGames();
             }
         });
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        setupTableTabelle();
-        setupTableSpielplan();
-        setupTableTeamVerwalten();
-        setupSettingsTab();
-        pointsSettings.add(pointsPerDraw);
-        pointsSettings.add(pointsPerLoss);
-        pointsSettings.add(pointsPerVictory);
-        settingsTabConstraints();
 
-    }
 
     public void onTurnierNeustarten() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
