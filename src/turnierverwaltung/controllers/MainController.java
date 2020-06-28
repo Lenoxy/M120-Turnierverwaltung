@@ -18,6 +18,7 @@ import turnierverwaltung.models.Team;
 import turnierverwaltung.models.Turnier;
 
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.List;
@@ -161,17 +162,8 @@ public class MainController implements Initializable {
 
     }
 
-    public void onCreateTeam(Event e) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("../views/teamErstellen.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Team Erstellen");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root, 300, 175));
-            stage.show();
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
+    public void onCreateTeam(Event e) throws IOException {
+        TeamErstellenController controller = new TeamErstellenController(new Stage());
     }
 
     @FXML
@@ -192,12 +184,9 @@ public class MainController implements Initializable {
 
     public void reshuffleGroups(){
 
+
         Turnier.getInstance().getGroups().clear();
         Turnier.getInstance().getSpiele().clear();
-
-        Team teamOne = new Team("test1", 0, "a", 0, 0, 0, "Bucher");
-        Team teamTwo = new Team("test2", 0, "a", 0, 0, 0, "Bucher");
-        Turnier.getInstance().getSpiele().add(new Spiel(teamOne, teamTwo));
 
         final char[] groupNames = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K'};
         double teamAmount = Turnier.getInstance().getTeams().size();
@@ -233,8 +222,6 @@ public class MainController implements Initializable {
     }
 
     private void generateGames(){
-        Turnier.getInstance().getSpiele().clear();
-
         for(Group group : Turnier.getInstance().getGroups()){
             for(int teamCounter = 0; teamCounter < group.getGroupSize()-1; teamCounter++){
                 for(int innerCounter = teamCounter+1; innerCounter < group.getGroupSize() ; innerCounter++){
