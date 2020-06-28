@@ -1,6 +1,6 @@
 package turnierverwaltung.controllers;
 
-import javafx.collections.FXCollections;
+
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -129,7 +129,9 @@ public class TableViewController implements Initializable {
     }
 
     public void onTurnierNeustarten() {
-        Turnier.restartTurnier();
+        Turnier.getInstance().getTeams().clear();
+        Turnier.getInstance().getGroups().clear();
+        Turnier.getInstance().getSpiele().clear();
     }
 
     public void onRemoveSelectedTeam(Event e) {
@@ -163,17 +165,8 @@ public class TableViewController implements Initializable {
     @FXML
     public void editGame() throws Exception{
         Spiel game = spielplanTableView.getSelectionModel().getSelectedItem();
-
+        System.out.println(game);
         SpieldetailsController controller = new SpieldetailsController(game);
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/spieldetails.fxml"));
-        loader.setController(controller);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Spieldetails");
-        stage.setResizable(false);
-        stage.setScene(new Scene(root, 300, 175));
-        stage.show();
 
         SpieldetailsController.tableView = spielplanTableView;
 
@@ -234,7 +227,6 @@ public class TableViewController implements Initializable {
             }
         }
         TableViewController.instance.tableViewTabelle.refresh();
-        System.out.println("test");
     }
 
     private void arrangeTime(ObservableList<Spiel> spiele) {

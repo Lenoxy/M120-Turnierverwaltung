@@ -120,7 +120,6 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#reshuffleGroups" text="Button" />
                </children>
                <BorderPane.margin>
                   <Insets top="20.0" />

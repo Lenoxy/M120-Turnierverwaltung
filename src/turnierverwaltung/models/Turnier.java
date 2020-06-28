@@ -25,11 +25,6 @@ public class Turnier{
 
     }
 
-    public static void restartTurnier(){
-        instance = new Turnier();
-    }
-
-
     public static Turnier getInstance(){
         if(instance == null) instance = new Turnier();
         return instance;

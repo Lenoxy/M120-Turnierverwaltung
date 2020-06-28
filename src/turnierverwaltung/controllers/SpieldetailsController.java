@@ -1,16 +1,22 @@
 package turnierverwaltung.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import turnierverwaltung.models.Resultat;
 import turnierverwaltung.models.Spiel;
 import turnierverwaltung.models.Team;
 import turnierverwaltung.models.Turnier;
 
+import java.io.IOException;
 import java.net.URL;
+import java.rmi.server.ExportException;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 
@@ -20,27 +26,45 @@ public class SpieldetailsController implements Initializable{
     @FXML
     Label team1Name, team2Name;
 
-    Spiel game;
+    static Spiel GAME;
+    static Stage STAGE;
     public static TableView<Spiel>  tableView;
 
+    public SpieldetailsController() {
 
-    public SpieldetailsController(Spiel game){
-        this.game = game;
+    }
+
+
+    public SpieldetailsController(Spiel game) throws IOException {
+        GAME = game;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/spieldetails.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage newStage = new Stage();
+            newStage.setTitle("Spieldetails");
+            newStage.setScene(new Scene(root));
+            newStage.show();
+            STAGE = newStage;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
 
     public void initialize(URL location, ResourceBundle resources){
-        team1Name.setText(game.getTeam1());
-        team2Name.setText(game.getTeam2());
+        System.out.println("test: " + team1Name.getText());
+        System.out.println(GAME);
     }
 
     public void saveScore() {
         int scoreTeamOne = Integer.parseInt(textFieldTeamOne.getText());
         int scoreTeamTwo = Integer.parseInt(textFieldTeamTwo.getText());
 
-        game.setResultat(new Resultat(scoreTeamOne, scoreTeamTwo));
+        GAME.setResultat(new Resultat(scoreTeamOne, scoreTeamTwo));
         evaluateGames();
         tableView.refresh();
+        STAGE.close();
 
 
         // game.setResultat(new Resultat(scoreTeamOne, scoreTeamTwo));

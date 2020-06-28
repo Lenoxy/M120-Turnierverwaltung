@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="175" prefWidth="330.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="turnierverwaltung.controllers.SpieldetailsController">
     <center>
         <HBox prefHeight="150.0" prefWidth="315.0">
             <VBox prefHeight="100" prefWidth="50.0">
