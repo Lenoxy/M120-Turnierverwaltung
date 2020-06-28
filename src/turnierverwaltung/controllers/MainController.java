@@ -64,6 +64,7 @@ public class MainController implements Initializable {
         lossesColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("losses"));
         drawsColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("draws"));
         tableViewTabelle.setItems(Turnier.getInstance().getTeams());
+        tableViewTabelle.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     private void setupTableSpielplan() {
@@ -72,6 +73,7 @@ public class MainController implements Initializable {
         result.setCellValueFactory(new PropertyValueFactory<Spiel, String>("resultat"));
         time.setCellValueFactory(new PropertyValueFactory<Spiel, String>("time"));
         spielplanTableView.setItems(Turnier.getInstance().getSpiele());
+        spielplanTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     private void setupTableTeamVerwalten() {
@@ -79,6 +81,7 @@ public class MainController implements Initializable {
         teamPointsColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("points"));
         teamGroupColumn.setCellValueFactory(new PropertyValueFactory<Team, String>("group"));
         teamsTableView.setItems(Turnier.getInstance().getTeams());
+        teamsTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     private void setupSettingsTab() {
@@ -126,6 +129,7 @@ public class MainController implements Initializable {
         pointsSettings.add(pointsPerLoss);
         pointsSettings.add(pointsPerVictory);
         settingsTabConstraints();
+
     }
 
     public void onTurnierNeustarten() {
